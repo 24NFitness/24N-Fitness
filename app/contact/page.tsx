@@ -48,7 +48,7 @@ export default function ContactPage() {
 
   const handleClick = () => {
     // Always open WhatsApp regardless of device
-    window.open('https://wa.me/447727823451', '_blank');
+    window.open('https://wa.me/447533974442', '_blank');
   };
 
 
@@ -163,7 +163,7 @@ export default function ContactPage() {
                     >
                       {gymConfig.contact.email}
                     </a>
-                    <p className="caption-md text-gray-500 mt-1">We'll respond within 24 hours</p>
+                    <p className="caption-md text-gray-500 mt-1">We'll respond within 10 minutes</p>
                   </div>
                 </div>
 
@@ -204,7 +204,7 @@ export default function ContactPage() {
                   description="Fill out the form below and we'll get back to you as soon as possible."
                   buttonText="Find out more"
                   theme="light"
-                  size="lg"
+                  size="default"
                 />
               </div>
             </div>

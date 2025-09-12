@@ -6,7 +6,7 @@ import { gymConfig } from '@/lib/gym-config';
 const navigation = [
   { name: 'About', href: '/about' },
   { name: 'Services', href: '/services' },
-  { name: 'Testimonials', href: '/testimonials' },
+  { name: 'Timetable', href: '/class-schedule' },
   { name: 'Contact', href: '/contact' },
   { name: 'Join Now', href: '/join' },
 ];
@@ -28,7 +28,7 @@ export default function Footer() {
                 href="/"
                 className="flex w-fit items-center group mb-2"
               >
-                <div className="w-60 h-14 relative group-hover:scale-110 transition-transform duration-300">
+                <div className="w-24 h-24 relative group-hover:scale-110 transition-transform duration-300">
                   <Image
                     src={gymConfig.assets.horizontalLogo}
                     alt={`${gymConfig.name} Logo`}

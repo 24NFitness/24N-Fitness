@@ -5,7 +5,7 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import USPSection from '@/components/USPSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
-import Timetable from '@/components/Timetable';
+import FacilitiesSection from '@/components/FacilitiesSection';
 import LeadCaptureForm from '@/components/LeadCaptureForm';
 import Newsletter from '@/components/Newsletter';
 import Footer from '@/components/Footer';
@@ -122,8 +122,8 @@ export default function Home() {
         <Hero />
         <USPSection />
         <WellnessSection />
-        <TestimonialsSection />
-        <Timetable />
+        {/* <TestimonialsSection /> */}
+        <FacilitiesSection />
         <LeadCaptureForm />
         <Newsletter />
       </main>

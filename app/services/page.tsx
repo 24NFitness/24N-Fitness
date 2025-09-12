@@ -1,6 +1,6 @@
 'use client';
 
-import { Clock, Users, Zap, Target, Dumbbell, Heart, CheckCircle, ArrowRight } from 'lucide-react';
+import { Users, Zap, Target, Dumbbell, Heart, CheckCircle, ArrowRight, Calendar, CreditCard, Trophy, Flame, Clock, Star } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
@@ -8,44 +8,6 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { gymConfig } from '@/lib/gym-config';
 
-const programIcons = [Dumbbell, Target, Zap, Heart];
-const programFeatures = [
-  [
-    'Expert coaching and form correction',
-    'Scalable workouts for all fitness levels',
-    'Motivating group atmosphere',
-    'Varied daily workouts (WODs)',
-    'Progress tracking and benchmarks'
-  ],
-  [
-    'Completely personalized programming',
-    'Undivided attention from expert coaches',
-    'Flexible scheduling',
-    'Faster goal achievement',
-    'Injury prevention and rehabilitation'
-  ],
-  [
-    'Full access to premium equipment',
-    'Flexible training times',
-    'Perfect for skill practice',
-    'Supplement your group classes',
-    'Coach supervision available'
-  ],
-  [
-    'Technical skill development',
-    'Competition preparation',
-    'Video analysis and feedback',
-    'Progressive programming',
-    'Small class sizes for attention'
-  ]
-];
-// This will be moved inside the component where gymConfig is available
-const getProgramSchedules = (gymConfig: any) => [
-  'Mon-Sun: Multiple times daily',
-  'By appointment',
-  'Daily: Check timetable for times',
-  'Tue, Thu, Sat: 7:00 PM'
-];
 
 const included = [
   {
@@ -70,10 +32,30 @@ const included = [
   }
 ];
 
+// Icon mapping for different membership types
+const getMembershipIcon = (membershipName: string, type: string) => {
+  const iconMap: { [key: string]: any } = {
+    // Health Club
+    'Monthly Membership': Calendar,
+    'Annual Membership': Star,
+    // CrossFit
+    '12 Month Membership': Trophy,
+    'Monthly Rolling': Flame,
+    'Annual Membership_crossfit': Target,
+    // Class Packs
+    'Day Pass': Clock,
+    '10 Classes': CreditCard,
+    '20 Classes': Zap,
+  };
+
+  const key = type === 'crossfit' && membershipName === 'Annual Membership'
+    ? 'Annual Membership_crossfit'
+    : membershipName;
+
+  return iconMap[key] || Dumbbell;
+};
+
 export default function ProgramsPage() {
-
-
-  const programSchedules = getProgramSchedules(gymConfig);
 
   useEffect(() => {
     // Optimized intersection observer for element-level animations
@@ -131,90 +113,205 @@ export default function ProgramsPage() {
             </div>
 
             <h1 className="display-lg text-white mb-6 fade-in-up">
-              Find Your Perfect Program
+              Memberships
             </h1>
             <p className="body-lg text-gray-300 max-w-2xl mx-auto fade-in-up">
-              Choose from our comprehensive range of programs designed to meet you
-              wherever you are in your fitness journey. As a CrossFit affiliate and HYROX official partner, 
-              we deliver world-class training standards.
+              View our full list of memberships from the Health Club, CrossFit and Class Packs.
+              Choose the perfect membership option designed to meet your fitness goals.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Programs Overview */}
+      {/* Membership Categories */}
       <section className="section-padding bg-white section-container">
         <div className="content-width container-padding">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 slide-in-left">
-            {gymConfig.programs.slice(0, 3).map((program, index) => {
-              const IconComponent = programIcons[index];
-              return (
-                <div key={index} className="group relative bg-gradient-to-br from-white to-gray-50 border border-gray-200 hover:border-gray-300 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden animate-on-scroll">
+          {/* Health Club Memberships */}
+          <div className="mb-20">
+            <div className="text-center mb-12 fade-in-up">
+              <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-blue-50 text-blue-800 px-6 py-3 rounded-full mb-6">
+                <Dumbbell className="w-5 h-5 mr-2" />
+                <span className="font-semibold">Health Club</span>
+              </div>
+              <h2 className="display-md text-black mb-6">Health Club Memberships</h2>
+              <p className="body-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                Our facility is home to a range of premium BLK BOX, Spirit and Concept 2 equipment. 24N Fitness houses all the facilities to diversify your workouts. From yoga to free weights, the gym floor provides customers with a sleek, modern training space. Included in the Health Club membership is unlimited access to gym floor, mind and body studio, including all classes, changing facilities, sauna and ice bath.
+              </p>
+            </div>
 
-                  {/* Background Gradient Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 slide-in-left">
+              {gymConfig.memberships.filter(m => m.type === 'health-club').map((membership, index) => {
+                const IconComponent = getMembershipIcon(membership.name, membership.type);
 
-                  {/* Content */}
-                  <div className="relative z-10">
-                    {/* Icon */}
-                    <div className="mb-6">
-                      <div className="w-20 h-20 bg-gradient-to-br from-black to-gray-800 rounded-3xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                        <IconComponent className="w-10 h-10 text-white" />
+                return (
+                  <div key={index} className="group relative bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 hover:border-gray-300 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 overflow-hidden animate-on-scroll">
+                    {/* Background Gradient Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                    {/* Content */}
+                    <div className="relative z-10 text-center">
+                      {/* Icon */}
+                      <div className="mb-6 flex justify-center">
+                        <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-3xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                          <IconComponent className="w-10 h-10 text-white" />
+                        </div>
                       </div>
-                    </div>
 
-                    {/* Title */}
-                    <h3 className="text-3xl font-bold text-black mb-3 group-hover:text-gray-800 transition-colors duration-300">
-                      {program.name}
-                    </h3>
+                      {/* Title & Price */}
+                      <div className="mb-6">
+                        <h3 className="text-2xl font-bold text-black mb-3 group-hover:text-gray-800 transition-colors duration-300">
+                          {membership.name}
+                        </h3>
+                      </div>
 
-                    {/* Badges */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      <span className="bg-black/10 text-black px-3 py-1 rounded-full text-sm font-medium">
-                        {program.duration}
-                      </span>
-                      <span className="bg-black/10 text-black px-3 py-1 rounded-full text-sm font-medium">
-                        {program.intensity}
-                      </span>
-                      <span className="bg-black/10 text-black px-3 py-1 rounded-full text-sm font-medium">
-                        Max {program.maxParticipants}
-                      </span>
+                      {/* CTA Button */}
+                      <Link href={membership.link} target="_blank">
+                        <Button className="w-full bg-black hover:bg-gray-800 text-white transition-all duration-300 transform hover:scale-105">
+                          Buy Now
+                        </Button>
+                      </Link>
                     </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
 
-                    {/* Description */}
-                    <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                      {program.description}
-                    </p>
+          {/* CrossFit Memberships */}
+          <div className="mb-20">
+            <div className="text-center mb-12 fade-in-up">
+              <div className="inline-flex items-center bg-gradient-to-r from-red-100 to-red-50 text-red-800 px-6 py-3 rounded-full mb-6">
+                <Target className="w-5 h-5 mr-2" />
+                <span className="font-semibold">CrossFit</span>
+              </div>
+              <h2 className="display-md text-black mb-6">CrossFit Memberships</h2>
+              <p className="body-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                Liverpool Street CrossFit, owned and housed by 24N Fitness, sits below the Health Club. The CrossFit box is unlike anything of its kind, merging CrossFit with high end luxury fitness. In this remarkable space sits a full, custom built BLK BOX rig, accompanied by ceiling mounted gymnastic rings, a full range of free weights and much more. The Liverpool Street CrossFit memberships provide access to all areas in the 24N Fitness Health Club, as well as, unlimited CrossFit classes and open gym in the CrossFit space.
+              </p>
+            </div>
 
-                    {/* Key Features (Top 3) */}
-                    <div className="mb-8">
-                      <ul className="space-y-3">
-                        {programFeatures[index].slice(0, 3).map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-start space-x-3">
-                            <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <CheckCircle className="w-4 h-4 text-green-600" />
-                            </div>
-                            <span className="text-base text-gray-700">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 slide-in-right">
+              {gymConfig.memberships.filter(m => m.type === 'crossfit').map((membership, index) => {
+                const IconComponent = getMembershipIcon(membership.name, membership.type);
 
-                    {/* Price & Schedule */}
-                    {/* <div className="mb-8 p-4 bg-gray-50 rounded-2xl">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-2xl font-bold text-black">{program.price}</span>
-                      <span className="text-sm text-gray-500">Starting from</span>
+                return (
+                  <div key={index} className="group relative bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 hover:border-gray-300 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 overflow-hidden animate-on-scroll">
+                    {/* Background Gradient Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                    {/* Content */}
+                    <div className="relative z-10 text-center">
+                      {/* Icon */}
+                      <div className="mb-6 flex justify-center">
+                        <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-3xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                          <IconComponent className="w-10 h-10 text-white" />
+                        </div>
+                      </div>
+
+                      {/* Title & Price */}
+                      <div className="mb-6">
+                        <h3 className="text-xl font-bold text-black mb-3 group-hover:text-gray-800 transition-colors duration-300">
+                          {membership.name}
+                        </h3>
+                      </div>
+
+                      {/* CTA Button */}
+                      <Link href={membership.link} target="_blank">
+                        <Button className="w-full bg-black hover:bg-gray-800 text-white transition-all duration-300 transform hover:scale-105">
+                          Buy Now
+                        </Button>
+                      </Link>
                     </div>
-                    <div className="flex items-center space-x-2 text-sm text-gray-600">
-                      <Clock className="w-4 h-4" />
-                      <span>{programSchedules[index]}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Class Packs */}
+          <div className="mb-20">
+            <div className="text-center mb-12 fade-in-up">
+              <div className="inline-flex items-center bg-gradient-to-r from-green-100 to-green-50 text-green-800 px-6 py-3 rounded-full mb-6">
+                <Users className="w-5 h-5 mr-2" />
+                <span className="font-semibold">Class Packs</span>
+              </div>
+              <h2 className="display-md text-black mb-6">Class Packs</h2>
+              <p className="body-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                Liverpool Street CrossFit, owned and housed by 24N Fitness, sits below the Health Club. The CrossFit box is unlike anything of its kind, merging CrossFit with high end luxury fitness. In this remarkable space sits a full, custom built BLK BOX rig, accompanied by ceiling mounted gymnastic rings, a full range of free weights and much more. The Liverpool Street CrossFit memberships provide access to all areas in the 24N Fitness Health Club, as well as, unlimited CrossFit classes and open gym in the CrossFit space.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 slide-in-left">
+              {gymConfig.memberships.filter(m => m.type === 'class-pack').map((membership, index) => {
+                const IconComponent = getMembershipIcon(membership.name, membership.type);
+
+                return (
+                  <div key={index} className="group relative bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200 hover:border-gray-300 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 overflow-hidden animate-on-scroll">
+                    {/* Background Gradient Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                    {/* Content */}
+                    <div className="relative z-10 text-center">
+                      {/* Icon */}
+                      <div className="mb-6 flex justify-center">
+                        <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-3xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                          <IconComponent className="w-10 h-10 text-white" />
+                        </div>
+                      </div>
+
+                      {/* Title & Price */}
+                      <div className="mb-6">
+                        <h3 className="text-xl font-bold text-black mb-3 group-hover:text-gray-800 transition-colors duration-300">
+                          {membership.name}
+                        </h3>
+                        <div className="text-3xl font-bold text-black mb-2">{membership.price}</div>
+                      </div>
+
+                      {/* CTA Button */}
+                      <Link href={membership.link} target="_blank">
+                        <Button className="w-full bg-black hover:bg-gray-800 text-white transition-all duration-300 transform hover:scale-105">
+                          Buy Now
+                        </Button>
+                      </Link>
                     </div>
-                  </div> */}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8 Weeks Transformation Program */}
+      <section className="section-padding bg-gradient-to-br from-gray-900 via-black to-gray-900 section-container">
+        <div className="content-width container-padding">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="text-center mb-12 fade-in-up">
+              <h2 className="display-lg text-white mb-8">
+                JOIN OUR 8 WEEKS{' '}
+                <span className="bg-gradient-to-r from-[#5c7893] to-[#e6e6e6] bg-clip-text text-transparent">
+                  TRANSFORMATION
+                </span>{' '}
+                PROGRAM
+              </h2>
+
+              {gymConfig.memberships.filter(m => m.type === 'transformation').map((program, index) => (
+                <div key={index} className="slide-in-up">
+                  <p className="body-xl text-gray-300 mb-12 max-w-3xl mx-auto">
+                    {program.description}
+                  </p>
+
+                  {/* CTA */}
+                  <div className="text-center">
+                    <Link href={program.link} target="_blank">
+                      <Button className="text-xl px-12 py-4 bg-[#5c7893]">
+                        SIGN UP NOW
+                      </Button>
+                    </Link>
                   </div>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -228,8 +325,7 @@ export default function ProgramsPage() {
             </h2>
             <p className="body-xl text-gray-600 max-w-3xl mx-auto fade-in-up">
               Every {gymConfig.displayName} membership includes more than just access to equipment.
-              You're joining a comprehensive fitness ecosystem backed by our CrossFit affiliation 
-              and HYROX partnership standards.
+              You're joining a comprehensive fitness ecosystem with premium facilities and expert support.
             </p>
           </div>
 
@@ -252,11 +348,11 @@ export default function ProgramsPage() {
         {/* View All Programs Link */}
         <div className="text-center mt-24">
           <p className="text-gray-600 mb-4 fade-in-up">
-            Want to learn more about our services?
+            Ready to start your fitness journey?
           </p>
           <Link href="/join">
             <Button variant="outline" size="lg" className="fade-in-up">
-              Find out more
+              Get Started Today
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>

@@ -11,7 +11,7 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Services', href: '/services' },
-  { name: 'Testimonials', href: '/testimonials' },
+  { name: 'Timetable', href: '/class-schedule' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -61,7 +61,7 @@ export default function Header() {
               href="/" 
               className="flex items-center group"
             >
-              <div className="w-12 h-12 relative group-hover:scale-110 transition-transform duration-300">
+              <div className="w-24 h-24 relative group-hover:scale-110 transition-transform duration-300">
                 <Image
                   src={gymConfig.assets.logo}
                   alt={`${gymConfig.name} Logo`}

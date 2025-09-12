@@ -16,7 +16,7 @@ interface TrialFormProps {
 
 export default function TrialForm({ 
   title = "Book Your Consultation",
-  description = "Fill out the form below and we'll contact you within 24 hours",
+  description = "Fill out the form below and we'll contact you within 10 minutes",
   buttonText = "Book Your Consultation",
   theme = 'dark',
   size = 'default'
@@ -161,7 +161,7 @@ export default function TrialForm({
         <div className="mb-6 p-4 bg-green-500/20 border border-green-500/30 rounded-xl text-center">
           <div className={`flex items-center justify-center gap-2 ${successTextColor}`}>
             <CheckCircle className="w-5 h-5" />
-            <span className="font-semibold">Success! We'll contact you within 24 hours.</span>
+            <span className="font-semibold">Success! We'll contact you within 10 minutes.</span>
           </div>
         </div>
       )}

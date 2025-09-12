@@ -143,6 +143,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
+        <meta name="apple-mobile-web-app-title" content="24N Fitness" />
         
         {/* Meta Pixel - Noscript fallback */}
         <noscript>

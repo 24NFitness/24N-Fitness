@@ -113,7 +113,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--gradient-accent);
+    background: #5c7893;
     border-radius: var(--radius-sm);
   }
 

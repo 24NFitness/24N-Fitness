@@ -24,7 +24,7 @@ export default function WhatsAppChatButton() {
 
   const handleClick = () => {
     // Always open WhatsApp regardless of device
-    window.open('https://wa.me/447727823451', '_blank');
+    window.open('https://wa.me/447533974442', '_blank');
   };
 
   return (

@@ -10,10 +10,10 @@ const buttonVariants = cva(
     variants: {
       variant: {
         // Primary CTA Button - White background for dark themes
-        primary: "bg-white hover:bg-gray-100 text-black font-semibold rounded-2xl shadow-lg hover:scale-105 hover:shadow-xl",
+        primary: "bg-[#e6e6e6] hover:bg-gray-100 text-black font-semibold rounded-2xl shadow-lg hover:scale-105 hover:shadow-xl",
         
         // Secondary Button - Transparent with border
-        secondary: "bg-transparent border-2 border-white text-white hover:bg-white hover:text-black font-semibold rounded-2xl",
+        secondary: "bg-transparent border-2 border-[#e6e6e6] text-white hover:bg-white hover:text-black font-semibold rounded-2xl",
         
         // Dark Button - Black background for light themes
         dark: "bg-black hover:bg-gray-800 text-white font-semibold rounded-2xl shadow-lg hover:scale-105",

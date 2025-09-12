@@ -71,7 +71,7 @@ export default function LeadCaptureForm() {
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 shadow-2xl">
               <TrialForm 
                 title="Claim Your Free Trial"
-                description="Fill out the form below and we'll contact you within 24 hours"
+                description="Fill out the form below and we'll contact you within 10 minutes"
                 buttonText="Claim Your Free Trial"
                 theme="dark"
                 size="default"

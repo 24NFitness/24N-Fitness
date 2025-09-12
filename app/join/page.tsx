@@ -148,7 +148,7 @@ export default function JoinPage() {
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 scale-in">
               <TrialForm 
                 title="Claim Your Free Trial"
-                description="Fill out the form below and we'll contact you within 24 hours to get you started"
+                description="Fill out the form below and we'll contact you within 10 minutes to get you started"
                 buttonText="Claim Your Free Trial"
                 theme="dark"
                 size="default"
