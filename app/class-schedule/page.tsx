@@ -8,9 +8,71 @@ import { Button } from '@/components/ui/button';
 import { gymConfig } from '@/lib/gym-config';
 import Link from 'next/link';
 
+// TypeScript declarations for BSport Widget
+declare global {
+    interface Window {
+        BsportWidget?: {
+            mount: (config: any) => void;
+        };
+        MountBsportWidget?: (config: any, repeat?: number) => void;
+    }
+}
+
 export default function ClassSchedulePage() {
 
     useEffect(() => {
+        // Load BSport Widget Scripts
+        const loadBSportWidget = () => {
+            // Check if scripts are already loaded
+            if (document.getElementById('bsport-widget-cdn')) {
+                return;
+            }
+
+            // Load the BSport widget CDN script
+            const cdnScript = document.createElement('script');
+            cdnScript.id = 'bsport-widget-cdn';
+            cdnScript.src = 'https://cdn.bsport.io/scripts/widget.js';
+            document.head.appendChild(cdnScript);
+
+            // Add the mount function
+            const mountScript = document.createElement('script');
+            mountScript.id = 'bsport-widget-mount';
+            mountScript.innerHTML = `
+                function MountBsportWidget(config, repeat=1) {
+                    if (repeat > 50) { return }
+                    if (!window.BsportWidget) {
+                        return setTimeout(() => {
+                            MountBsportWidget(config,repeat+1)
+                        }, 100 * repeat || 1)
+                    }
+                    BsportWidget.mount(config)
+                }
+            `;
+            document.head.appendChild(mountScript);
+
+            // Initialize the widget
+            const initScript = document.createElement('script');
+            initScript.innerHTML = `
+                MountBsportWidget({
+                    "parentElement": "bsport-widget-387122",
+                    "companyId": 3535,
+                    "franchiseId": null,
+                    "dialogMode": 1,
+                    "widgetType": "calendar",
+                    "showFab": false,
+                    "fullScreenPopup": false,
+                    "styles": undefined,
+                    "config": {
+                        "calendar": {}
+                    }
+                })
+            `;
+            document.head.appendChild(initScript);
+        };
+
+        // Load BSport widget
+        loadBSportWidget();
+
         // Optimized intersection observer for element-level animations
         const observerOptions = {
             threshold: 0.1,
@@ -91,35 +153,11 @@ export default function ClassSchedulePage() {
                 </div>
             </section>
 
-            {/* Full Visible Timetable */}
+            {/* BSport Widget Timetable */}
             <section className="bg-white">
-                {/* <iframe
-                    src="https://www-24nfitness-com.filesusr.com/html/2cbc82_b2f32bc7cdedce3116b26c43fd044d8e.html"
-                    className="w-full"
-                    style={{
-                        border: 'none',
-                        width: '100vw',
-                        height: '200vh',
-                        display: 'block'
-                    }}
-                    title="24N Fitness Weekly Timetable"
-                    loading="eager"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    scrolling="no"
-                    frameBorder="0"
-                /> */}
-
                 <div className="p-4">
                     <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
-                        <iframe
-                            src="https://www-24nfitness-com.filesusr.com/html/2cbc82_b2f32bc7cdedce3116b26c43fd044d8e.html"
-                            width="100%"
-                            height="600"
-                            style={{ border: 'none', minHeight: '600px' }}
-                            title="CrossFit Kernow Class Timetable"
-                            loading="lazy"
-                        />
+                        <div id="bsport-widget-387122" className="min-h-[600px]"></div>
                     </div>
                 </div>
             </section>
