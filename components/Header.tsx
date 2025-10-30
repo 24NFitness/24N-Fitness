@@ -79,7 +79,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-300 hover:text-white font-semibold text-lg transition-all duration-300 relative group py-2"
+                className="text-gray-300 hover:text-white font-serif font-semibold text-lg transition-all duration-300 relative group py-2"
               >
                 <span className="relative z-10">{item.name}</span>
                 <div className="absolute bottom-0 left-0 w-0 h-1 bg-white transition-all duration-300 group-hover:w-full rounded-full"></div>
@@ -125,7 +125,7 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block w-full text-left px-6 py-5 text-gray-300 hover:text-white heading-lg hover:bg-white/10 transition-all duration-300 rounded-2xl"
+                  className="block w-full text-left px-6 py-5 text-gray-300 hover:text-white font-serif heading-lg hover:bg-white/10 transition-all duration-300 rounded-2xl"
                 >
                   {item.name}
                 </Link>
