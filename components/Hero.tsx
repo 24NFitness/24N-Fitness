@@ -58,11 +58,11 @@ export default function Hero() {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Link href="/class-schedule">
+            {/* <Link href="/class-schedule">
               <Button variant="secondary" size="lg" className="min-w-[200px]">
                 Join Newsletter
               </Button>
-            </Link>
+            </Link> */}
           </div>
 
           {/* Social Proof */}

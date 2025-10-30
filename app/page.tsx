@@ -125,7 +125,7 @@ export default function Home() {
         {/* <TestimonialsSection /> */}
         <FacilitiesSection />
         <LeadCaptureForm />
-        <Newsletter />
+        {/* <Newsletter /> */}
       </main>
       <Footer/>
     </>
