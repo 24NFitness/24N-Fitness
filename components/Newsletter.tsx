@@ -18,7 +18,7 @@ export default function Newsletter() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://services.leadconnectorhq.com/hooks/gX1qHkrsgea61x3yTuWg/webhook-trigger/895041f4-c4be-48cc-82a9-e00a7b53f60b', {
+      const response = await fetch('https://services.leadconnectorhq.com/hooks/pdNVeOQrokwprvPa1qJp/webhook-trigger/c2389e4f-1f88-4650-ae8a-5423ed4af57b', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
