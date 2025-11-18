@@ -12,7 +12,7 @@ const navigation = [
   { name: 'About', href: '/about' },
   { name: 'Services', href: '/services' },
   { name: 'Timetable', href: '/class-schedule' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Contact', href: '/contact-us' },
 ];
 
 export default function Header() {

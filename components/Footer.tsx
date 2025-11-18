@@ -7,7 +7,7 @@ const navigation = [
   { name: 'About', href: '/about' },
   { name: 'Services', href: '/services' },
   { name: 'Timetable', href: '/class-schedule' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Contact', href: '/contact-us' },
   { name: 'Join Now', href: '/join' },
 ];
 
@@ -49,7 +49,7 @@ export default function Footer() {
                     <MapPin className="w-5 h-5 text-white" />
                   </div>
                   <Link
-                    href="/contact#contact-map"
+                    href="/contact-us#contact-map"
                     className="text-gray-400 hover:text-white transition-colors duration-300 break-words max-w-xs sm:max-w-xl"
                     aria-label={`View map on contact page: ${gymConfig.contact.address.full}`}
                   >

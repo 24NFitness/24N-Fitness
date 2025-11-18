@@ -7,10 +7,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Contact ${gymConfig.name} | Get in Touch`,
     description: `Contact ${gymConfig.name} for membership info, free trials, or questions.`,
-    url: `${gymConfig.urls.website}/contact`,
+    url: `${gymConfig.urls.website}/contact-us`,
   },
   alternates: {
-    canonical: '/contact',
+    canonical: '/contact-us',
   },
 };
 

@@ -189,7 +189,7 @@ export const gymConfig: GymConfig = {
     consultation: 'https://api.gymgrow.app/widget/bookings/24ncalendar',
     services: '/services',
     about: '/about',
-    contact: '/contact'
+    contact: '/contact-us'
   },
 
   // Social Media Links
