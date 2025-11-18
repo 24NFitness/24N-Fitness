@@ -196,7 +196,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="section-padding bg-gray-50 section-container">
+      {/* <section className="section-padding bg-gray-50 section-container">
         <div className="content-width container-padding">
           <div className="text-center mb-16">
             <h2 className="display-md text-black mb-8 fade-in-up">
@@ -234,20 +234,12 @@ export default function AboutPage() {
                   <p className="body-sm text-gray-600">
                     {member.bio}
                   </p>
-                  {/* <div className="space-y-1 mt-4">
-                    {member.certifications.map((cert, certIndex) => (
-                      <div key={certIndex} className="flex items-center space-x-2">
-                        <CheckCircle className="w-4 h-4 text-green-500" />
-                        <span className="caption-lg text-gray-600">{cert}</span>
-                      </div>
-                    ))}
-                  </div> */}
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="section-padding bg-black text-white relative overflow-hidden section-container">
