@@ -79,14 +79,27 @@ export default function FreeTrainingPage() {
 
             {/* Hero Section */}
             <section className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden pt-32 sm:pt-40">
-                {/* Background */}
+                {/* Background Video */}
                 <div className="absolute inset-0 z-0">
-                    <img
-                        src="/hero-image.webp"
-                        alt="HOTBOX Training Workshop"
-                        className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/70"></div>
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover"
+                    >
+                        <source src="/hero-video.mp4" type="video/mp4" />
+                        {/* Fallback image if video fails to load */}
+                        <Image
+                            src={gymConfig.assets.heroImage}
+                            alt="24N Fitness background"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                    </video>
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/70"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40"></div>
                 </div>
 
                 <div className="relative z-20 content-width container-padding text-center">
