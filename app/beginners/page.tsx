@@ -66,7 +66,7 @@ export default function FreeTrainingPage() {
                             </Link>
                         </div>
 
-                        <Link href="/apply">
+                        <Link href="/join">
                             <Button
                                 variant="primary" size="default"
                             >
@@ -107,7 +107,7 @@ export default function FreeTrainingPage() {
 
                         {/* Main Headline */}
                         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-6 tracking-tight hero-animate"
-                            style={{ fontFamily: 'Inter, system-ui, sans-serif', textShadow: '0 4px 20px rgba(0,0,0,0.8)', '--animation-delay': '0s' } as React.CSSProperties}>
+                           >
                             Train in 2026 for
                             <br />
                             <span className="bg-gradient-to-r from-[#00def5] via-[#00b8cc] to-[#0099b3] bg-clip-text text-transparent">
@@ -145,7 +145,7 @@ export default function FreeTrainingPage() {
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 hero-animate" style={{ '--animation-delay': '0.3s' } as React.CSSProperties}>
-                            <Link href="/apply">
+                            <Link href="/join">
                                 <Button variant="primary" size="lg">
                                     Apply Now
                                     <ArrowRight className="ml-2 w-5 h-5" />
@@ -246,7 +246,7 @@ export default function FreeTrainingPage() {
                             <p className="text-lg text-gray-200 mb-8">
                                 If you're accepted, you'll work directly with our coaching team to build a custom plan that fits your life - not someone else's idea of what fitness "should" look like.
                             </p>
-                            <Link href="/apply">
+                            <Link href="/join">
                                 <Button variant="primary" size="lg">
                                     Apply Now
                                     <ArrowRight className="ml-2 w-5 h-5" />
@@ -358,7 +358,7 @@ export default function FreeTrainingPage() {
                                         <p className="text-xl text-gray-800 font-bold">
                                             But if you're tired of sacrificing your health for your career... if you're frustrated by not knowing where to start... if you want a gym that actually treats you like a human being and not a membership number...
                                         </p>
-                                        <Link href="/apply" className="inline-block mt-4">
+                                        <Link href="/join" className="inline-block mt-4">
                                             <span className="text-xl font-bold text-[#00def5] hover:text-[#00b8cc] transition-colors duration-300 underline decoration-2 underline-offset-4">
                                                 Then apply now.
                                             </span>
@@ -429,7 +429,7 @@ export default function FreeTrainingPage() {
                                 <p className="text-lg text-gray-600 mb-6">
                                     This is your chance to stop putting it off. To stop feeling guilty about neglecting your health. To finally have the energy, confidence, and vitality you deserve.
                                 </p>
-                                <Link href="/apply" className="text-xl font-bold text-[#00def5] hover:text-[#00b8cc] transition-colors duration-300 underline decoration-2 underline-offset-4">
+                                <Link href="/join" className="text-xl font-bold text-[#00def5] hover:text-[#00b8cc] transition-colors duration-300 underline decoration-2 underline-offset-4">
                                     Apply now.
                                 </Link>
                             </div>
@@ -478,7 +478,7 @@ export default function FreeTrainingPage() {
                                         This is your chance to transform your health in 2026 without the usual gym intimidation, confusion, or generic programs that don't fit your busy professional life.
                                     </p>
                                     <div className="pt-8">
-                                        <Link href="/apply" className="inline-block">
+                                        <Link href="/join" className="inline-block">
                                             <Button variant="primary" size="lg">
                                                 Apply Now
                                                 <ArrowRight className="ml-2 w-5 h-5" />
