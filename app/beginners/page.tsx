@@ -66,7 +66,7 @@ export default function FreeTrainingPage() {
                             </Link>
                         </div>
 
-                        <Link href="/join">
+                        <Link href="/apply">
                             <Button
                                 variant="primary" size="default"
                             >
@@ -107,10 +107,10 @@ export default function FreeTrainingPage() {
 
                         {/* Main Headline */}
                         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-6 tracking-tight hero-animate"
-                           >
+                        >
                             Train in 2026 for
                             <br />
-                            <span className="bg-gradient-to-r from-[#00def5] via-[#00b8cc] to-[#0099b3] bg-clip-text text-transparent">
+                            <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl bg-gradient-to-r from-[#00def5] via-[#00b8cc] to-[#0099b3] bg-clip-text text-transparent">
                                 FREE
                             </span>&nbsp;at 24N Gym
                         </h1>
@@ -145,7 +145,7 @@ export default function FreeTrainingPage() {
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 hero-animate" style={{ '--animation-delay': '0.3s' } as React.CSSProperties}>
-                            <Link href="/join">
+                            <Link href="/apply">
                                 <Button variant="primary" size="lg">
                                     Apply Now
                                     <ArrowRight className="ml-2 w-5 h-5" />
@@ -178,23 +178,23 @@ export default function FreeTrainingPage() {
                             {[
                                 {
                                     icon: Target,
-                                    title: "Personalized Coaching That Fits Your Life",
-                                    description: "Why busy professionals are finally getting the body they want - without spending hours in the gym or following confusing workout plans that don't fit their chaotic schedules (the secret is a personalized coaching system that meets you exactly where you are, whether you've never touched a dumbbell or you're getting back after years away)"
+                                    title: "Personalized Coaching",
+                                    description: "Busy professionals finally getting results without living in the gym — with coaching tailored to your schedule, experience level, and goals."
                                 },
                                 {
                                     icon: Shield,
                                     title: "No More Intimidation or Confusion",
-                                    description: "The real reason you keep putting off getting fit isn't lack of time or willpower - it's because every gym treats you like a number, throws you into group classes that don't match your level, and leaves you feeling stupid and overwhelmed (discover how 24N's 1-on-1 and small group approach eliminates intimidation and builds unstoppable momentum through accountability)"
+                                    description: "No more being thrown into random classes and left to guess. We coach you step-by-step so you feel confident, supported, and never out of your depth."
                                 },
                                 {
                                     icon: Zap,
                                     title: "Reclaim Your Energy and Vitality",
-                                    description: "How to stop sacrificing your health for your career - and finally have the energy to dominate at work AND enjoy your life outside the office (this is about reclaiming the vitality you had 10 years ago, and it starts with a proven system that's already transformed over 10,000 people in just 3 years)"
+                                    description: "Stop trading your health for your career. Build strength, fitness, and energy that helps you perform better at work and enjoy life outside of it."
                                 },
                                 {
                                     icon: Award,
                                     title: "Commitment That Gets Results",
-                                    description: "Why this \"free training\" opportunity comes with a commitment fee that you get back - and why that makes all the difference between people who get results and people who stay stuck (only 10 spots available, deadline December 15th, and if you're not ready to prove you're serious, don't waste our time or yours)"
+                                    description: "Yes, this offer is free — but we only want busy professionals who are serious about showing up consistently and sticking with the process long term."
                                 },
 
                             ].map((item, index) => (
@@ -246,7 +246,7 @@ export default function FreeTrainingPage() {
                             <p className="text-lg text-gray-200 mb-8">
                                 If you're accepted, you'll work directly with our coaching team to build a custom plan that fits your life - not someone else's idea of what fitness "should" look like.
                             </p>
-                            <Link href="/join">
+                            <Link href="/apply">
                                 <Button variant="primary" size="lg">
                                     Apply Now
                                     <ArrowRight className="ml-2 w-5 h-5" />
@@ -256,6 +256,82 @@ export default function FreeTrainingPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Application Process */}
+            <section className="section-padding bg-white section-container">
+                <div className="content-width container-padding">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl sm:text-5xl bg-gradient-to-r from-[#111827] to-[#01BEE4] bg-clip-text text-transparent font-bold fade-in-up">
+                            Here's What Happens Next
+                        </h2>
+                    </div>
+
+                    <div className="max-w-4xl mx-auto">
+                        <div className="space-y-8">
+                            {[
+                                {
+                                    step: "1",
+                                    title: "Submit your details",
+                                    description: "You fill out a short application to see if you're a good fit."
+                                },
+                                {
+                                    step: "2",
+                                    title: "Book Consultation",
+                                    description: "If accepted, you book a consultation with our team."
+                                },
+                                {
+                                    step: "3",
+                                    title: "Meet your coach",
+                                    description: "In that meeting, we'll discuss your goals, your schedule, your challenges, and build a custom plan."
+                                },
+                                {
+                                    step: "4",
+                                    title: "Start Training",
+                                    description: "You start training in 2026 with personalized coaching, custom workout plans, nutrition guidance, and weekly check-ins."
+                                }
+                            ].map((item, index) => (
+                                <div key={index} className="flex items-center gap-6 animate-on-scroll">
+                                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-[#00def5] to-[#0099b3] rounded-full flex items-center justify-center shadow-lg">
+                                        <span className="text-white font-bold text-lg">{item.step}</span>
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="text-xl font-bold text-gray-800">{item.title}</h3>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="mt-12 text-center animate-on-scroll">
+                            <div className="bg-gradient-to-r from-[#00def5]/10 to-[#0099b3]/10 border border-[#00def5]/20 rounded-xl p-8">
+                                <p className="text-xl font-bold text-gray-800 mb-4">
+                                    Deadline: December 15th | Spots: Only 10
+                                </p>
+                                <p className="text-lg text-gray-600 mb-6">
+                                    This is your chance to stop putting it off. To stop feeling guilty about neglecting your health. To finally have the energy, confidence, and vitality you deserve.
+                                </p>
+                                <Link href="/apply" className="text-xl font-bold text-[#00def5] hover:text-[#00b8cc] transition-colors duration-300 underline decoration-2 underline-offset-4">
+                                    Apply now.
+                                </Link>
+                            </div>
+                        </div>
+
+                        {/* <div className="mt-8 text-center animate-on-scroll">
+                            <div className="flex items-center gap-3 text-[#00def5] font-semibold text-lg justify-center">
+                                <span>Follow us:</span>
+                                <a
+                                    href="https://www.instagram.com/24nfitness"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-[#00b8cc] transition-colors duration-300 underline decoration-2 underline-offset-4"
+                                >
+                                    @24nfitness
+                                </a>
+                            </div>
+                        </div> */}
+                    </div>
+                </div>
+            </section>
+
 
             {/* Main Body Copy */}
             <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100">
@@ -358,7 +434,7 @@ export default function FreeTrainingPage() {
                                         <p className="text-xl text-gray-800 font-bold">
                                             But if you're tired of sacrificing your health for your career... if you're frustrated by not knowing where to start... if you want a gym that actually treats you like a human being and not a membership number...
                                         </p>
-                                        <Link href="/join" className="inline-block mt-4">
+                                        <Link href="/apply" className="inline-block mt-4">
                                             <span className="text-xl font-bold text-[#00def5] hover:text-[#00b8cc] transition-colors duration-300 underline decoration-2 underline-offset-4">
                                                 Then apply now.
                                             </span>
@@ -371,104 +447,14 @@ export default function FreeTrainingPage() {
                 </div>
             </section>
 
-            {/* Application Process */}
-            <section className="section-padding bg-white section-container">
-                <div className="content-width container-padding">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl sm:text-5xl bg-gradient-to-r from-[#111827] to-[#01BEE4] bg-clip-text text-transparent font-bold fade-in-up">
-                            Here's What Happens Next
-                        </h2>
-                    </div>
-
-                    <div className="max-w-4xl mx-auto">
-                        <div className="space-y-8">
-                            {[
-                                {
-                                    step: "1",
-                                    title: "Fill Out Application",
-                                    description: "You fill out a short application to see if you're a good fit."
-                                },
-                                {
-                                    step: "2",
-                                    title: "Book Consultation",
-                                    description: "If accepted, you book a consultation with our team."
-                                },
-                                {
-                                    step: "3",
-                                    title: "Custom Plan Discussion",
-                                    description: "In that meeting, we'll discuss your goals, your schedule, your challenges, and build a custom plan."
-                                },
-                                {
-                                    step: "4",
-                                    title: "Commitment Fee",
-                                    description: "You pay your commitment fee (returned as store credit)."
-                                },
-                                {
-                                    step: "5",
-                                    title: "Start Training",
-                                    description: "You start training in 2026 with personalized coaching, custom workout plans, nutrition guidance, and weekly check-ins."
-                                }
-                            ].map((item, index) => (
-                                <div key={index} className="flex items-start gap-6 animate-on-scroll">
-                                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-[#00def5] to-[#0099b3] rounded-full flex items-center justify-center shadow-lg">
-                                        <span className="text-white font-bold text-lg">{item.step}</span>
-                                    </div>
-                                    <div className="flex-1">
-                                        <h3 className="text-xl font-bold text-gray-800 mb-2">{item.title}</h3>
-                                        <p className="text-lg text-gray-600 leading-relaxed">{item.description}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="mt-12 text-center animate-on-scroll">
-                            <div className="bg-gradient-to-r from-[#00def5]/10 to-[#0099b3]/10 border border-[#00def5]/20 rounded-xl p-8">
-                                <p className="text-xl font-bold text-gray-800 mb-4">
-                                    Deadline: December 15th | Spots: Only 10
-                                </p>
-                                <p className="text-lg text-gray-600 mb-6">
-                                    This is your chance to stop putting it off. To stop feeling guilty about neglecting your health. To finally have the energy, confidence, and vitality you deserve.
-                                </p>
-                                <Link href="/join" className="text-xl font-bold text-[#00def5] hover:text-[#00b8cc] transition-colors duration-300 underline decoration-2 underline-offset-4">
-                                    Apply now.
-                                </Link>
-                            </div>
-                        </div>
-
-                        {/* <div className="mt-8 text-center animate-on-scroll">
-                            <div className="flex items-center gap-3 text-[#00def5] font-semibold text-lg justify-center">
-                                <span>Follow us:</span>
-                                <a
-                                    href="https://www.instagram.com/24nfitness"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-[#00b8cc] transition-colors duration-300 underline decoration-2 underline-offset-4"
-                                >
-                                    @24nfitness
-                                </a>
-                            </div>
-                        </div> */}
-                    </div>
-                </div>
-            </section>
-
 
             {/* What Makes This Different */}
 
             <div className="bg-gradient-radial from-[#01bee4]/30  via-[#015060] to-[#01bee4]/30">
-
-
-
-
                 {/* Final CTA Section */}
-                <section id="apply-section" className="pb-20 pt-8 animate-on-scroll">
+                <section id="apply-section" className="pb-20 pt-16 animate-on-scroll">
                     <div className="content-width container-padding">
                         <div className="max-w-5xl mx-auto">
-                            <h2 className="text-4xl sm:text-5xl bg-gradient-to-l from-white to-[#01BEE4] 
-    bg-clip-text text-transparent font-bold text-center mb-16 animate-on-scroll">
-                                10 Spots. Free Training. Prove You're Serious.
-                            </h2>
-
                             <div className="glass-effect p-8 sm:p-12 rounded-2xl border border-[#00def5]/30 bg-[#00def5]/5 backdrop-blur-md animate-on-scroll">
                                 <div className="text-center space-y-8">
                                     <p className="text-2xl sm:text-3xl font-bold text-white">
@@ -478,7 +464,7 @@ export default function FreeTrainingPage() {
                                         This is your chance to transform your health in 2026 without the usual gym intimidation, confusion, or generic programs that don't fit your busy professional life.
                                     </p>
                                     <div className="pt-8">
-                                        <Link href="/join" className="inline-block">
+                                        <Link href="/apply" className="inline-block">
                                             <Button variant="primary" size="lg">
                                                 Apply Now
                                                 <ArrowRight className="ml-2 w-5 h-5" />
