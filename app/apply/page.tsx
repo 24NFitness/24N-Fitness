@@ -84,7 +84,7 @@ export default function ApplyPage() {
             </div>
             
             <h1 className="display-sm text-white mb-6 fade-in-up">
-              Apply for Free Training in 2026
+              Apply to work with us
             </h1>
             {/* <p className="body-lg text-gray-300 max-w-2xl mx-auto mb-6 fade-in-up">
               Only 10 spots available for busy Liverpool Street professionals. 

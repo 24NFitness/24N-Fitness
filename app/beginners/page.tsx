@@ -124,7 +124,7 @@ export default function FreeTrainingPage() {
 
                         <div className="flex items-center justify-center gap-3 mb-8 hero-animate" style={{ '--animation-delay': '0.15s' } as React.CSSProperties}>
                             <p className="text-lg sm:text-xl text-red-400 font-bold  tracking-wide">
-                                Only 10 Liverpool Street Professionals Will Get This Chance to Transform Their Health in 2026
+                                10 Liverpool Street Professionals Will Get This Chance to Transform Their Health in 2026
                             </p>
                         </div>
 
@@ -132,7 +132,7 @@ export default function FreeTrainingPage() {
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12 hero-animate" style={{ '--animation-delay': '0.2s' } as React.CSSProperties}>
                             <div className="flex items-center gap-2 text-lg text-gray-300">
                                 <Users className="w-5 h-5 text-[#00def5]" />
-                                <span>Only 10 Spots Available</span>
+                                <span>10 Spots Available</span>
                             </div>
                             <div className="flex items-center gap-2 text-lg text-gray-300">
                                 <Calendar className="w-5 h-5 text-[#00def5]" />
