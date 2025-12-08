@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import Script from 'next/script';
 import { gymConfig } from '@/lib/gym-config';
 
 export const metadata: Metadata = {
@@ -20,14 +19,5 @@ export default function ThankYouLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <Script id="meta-pixel-lead" strategy="afterInteractive">
-        {`
-          fbq('track', 'Lead');
-        `}
-      </Script>
-      {children}
-    </>
-  );
+  return children;
 }

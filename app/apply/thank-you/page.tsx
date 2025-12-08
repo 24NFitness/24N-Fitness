@@ -8,9 +8,22 @@ import { gymConfig } from '@/lib/gym-config';
 
 export default function ThankYouPage() {
   useEffect(() => {
-    // Fire Meta Pixel Lead event
+    // Fire Meta Pixel Lead event with event_id for deduplication and variant tracking
     if (typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'Lead');
+      // Get event_id and variant from sessionStorage
+      const eventId = sessionStorage.getItem('capi_event_id');
+      const abVariant = sessionStorage.getItem('ab_variant') || 'unknown';
+      
+      if (eventId) {
+        // Fire with event_id for deduplication with CAPI, include variant in custom data
+        (window as any).fbq('track', 'Lead', { ab_variant: abVariant }, { eventID: eventId });
+        // Clean up the stored values
+        sessionStorage.removeItem('capi_event_id');
+        sessionStorage.removeItem('ab_variant');
+      } else {
+        // Fallback: fire without event_id but still include variant
+        (window as any).fbq('track', 'Lead', { ab_variant: abVariant });
+      }
     }
 
     // Optimized intersection observer for element-level animations

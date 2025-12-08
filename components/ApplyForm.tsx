@@ -31,12 +31,23 @@ export default function ApplyForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
+  // Helper function to get cookie value
+  const getCookie = (name: string): string | null => {
+    if (typeof document === 'undefined') return null;
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Get A/B variant from cookie for tracking
+    const abVariant = getCookie('ab-variant') || 'unknown';
+
     try {
-      const response = await fetch('https://services.leadconnectorhq.com/hooks/pdNVeOQrokwprvPa1qJp/webhook-trigger/iJZ6nowhoKTMV8NEfZrV', {
+      // First, send to CRM webhook (include variant for CRM tracking)
+      const crmResponse = await fetch('https://services.leadconnectorhq.com/hooks/pdNVeOQrokwprvPa1qJp/webhook-trigger/iJZ6nowhoKTMV8NEfZrV', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,19 +56,57 @@ export default function ApplyForm({
           first_name: formData.first_name,
           last_name: formData.last_name,
           email: formData.email,
-          phone: formData.phone
+          phone: formData.phone,
+          ab_variant: abVariant // Track which variant the lead came from
         })
       });
 
-      if (response.ok) {
-        console.log('Form submitted successfully');
-        setIsSubmitted(true);
-        // Redirect to thank you page after successful submission
-        router.push('/apply/thank-you');
-      } else {
-        console.error('Form submission failed:', response.statusText);
+      if (!crmResponse.ok) {
+        console.error('CRM submission failed:', crmResponse.statusText);
         alert('There was an error submitting your form. Please try again.');
+        return;
       }
+
+      console.log('CRM submission successful');
+
+      // Then, send to Meta Conversion API (include variant for Meta tracking)
+      try {
+        const capiResponse = await fetch('/api/capi-lead', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            first_name: formData.first_name,
+            last_name: formData.last_name,
+            email: formData.email,
+            phone: formData.phone,
+            ab_variant: abVariant // Track which variant the lead came from
+          })
+        });
+
+        const capiResult = await capiResponse.json();
+        
+        if (capiResponse.ok) {
+          console.log('CAPI submission successful:', capiResult);
+          // Store event_id and variant in sessionStorage for thank-you page deduplication
+          if (capiResult.event_id) {
+            sessionStorage.setItem('capi_event_id', capiResult.event_id);
+            sessionStorage.setItem('ab_variant', abVariant);
+          }
+        } else {
+          console.error('CAPI submission failed:', capiResult);
+          // Don't block the user flow if CAPI fails
+        }
+      } catch (capiError) {
+        console.error('CAPI request error:', capiError);
+        // Don't block the user flow if CAPI fails
+      }
+
+      // Success - proceed to thank you page
+      setIsSubmitted(true);
+      router.push('/apply/thank-you');
+
     } catch (error) {
       console.error('Form submission error:', error);
       alert('There was an error submitting your form. Please try again.');
