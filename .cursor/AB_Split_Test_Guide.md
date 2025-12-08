@@ -5,42 +5,62 @@ Quick reference for implementing A/B split tests with Meta Pixel tracking in Nex
 ## File Structure
 
 ```
+middleware.ts              ← A/B routing (in project root)
 /app/page-name/
-├── page.tsx          ← SSR router (assigns A or B)
+├── page.tsx               ← Fallback (returns null)
 ├── a/
-│   └── page.tsx      ← Variant A
+│   └── page.tsx           ← Variant A
 └── b/
-    └── page.tsx      ← Variant B
+    └── page.tsx           ← Variant B
 ```
 
-## 1. Router Page (`/page-name/page.tsx`)
+## 1. Middleware (`middleware.ts` in project root)
 
 ```typescript
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-export default async function PageRouter() {
-  const cookieStore = await cookies();
-  const existingVariant = cookieStore.get('ab-variant')?.value;
+export function middleware(request: NextRequest) {
+  // Only handle /page-name route
+  if (request.nextUrl.pathname === '/page-name') {
+    const existingVariant = request.cookies.get('ab-variant')?.value;
 
-  // If user already has a variant assigned, redirect to it
-  if (existingVariant === 'a' || existingVariant === 'b') {
-    redirect(`/page-name/${existingVariant}`);
+    // If user already has a variant, redirect to it
+    if (existingVariant === 'a' || existingVariant === 'b') {
+      return NextResponse.redirect(new URL(`/page-name/${existingVariant}`, request.url));
+    }
+
+    // Randomly assign variant A or B
+    const variant = Math.random() < 0.5 ? 'a' : 'b';
+
+    // Create redirect response
+    const response = NextResponse.redirect(new URL(`/page-name/${variant}`, request.url));
+
+    // Set cookie for future visits
+    response.cookies.set('ab-variant', variant, {
+      maxAge: 60 * 60 * 24 * 30, // 30 days
+      httpOnly: false,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax'
+    });
+
+    return response;
   }
 
-  // Randomly assign variant A or B
-  const variant = Math.random() < 0.5 ? 'a' : 'b';
-  
-  // Set cookie for future visits
-  cookieStore.set('ab-variant', variant, {
-    maxAge: 60 * 60 * 24 * 30, // 30 days
-    httpOnly: false,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax'
-  });
-  
-  // Redirect to the assigned variant
-  redirect(`/page-name/${variant}`);
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: '/page-name'
+};
+```
+
+## 1b. Fallback Page (`/page-name/page.tsx`)
+
+```typescript
+// A/B routing is handled by middleware.ts
+export default function PageRouter() {
+  return null;
 }
 ```
 
