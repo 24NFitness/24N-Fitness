@@ -89,11 +89,7 @@ export default function ApplyForm({
         
         if (capiResponse.ok) {
           console.log('CAPI submission successful:', capiResult);
-          // Store event_id and variant in sessionStorage for thank-you page deduplication
-          if (capiResult.event_id) {
-            sessionStorage.setItem('capi_event_id', capiResult.event_id);
-            sessionStorage.setItem('ab_variant', abVariant);
-          }
+          // CAPI-only tracking - no need to store event_id for Pixel deduplication
         } else {
           console.error('CAPI submission failed:', capiResult);
           // Don't block the user flow if CAPI fails
