@@ -10,19 +10,22 @@ export default function ThankYouPage() {
   useEffect(() => {
     // Fire Meta Pixel Lead event with event_id for deduplication and variant tracking
     if (typeof window !== 'undefined' && (window as any).fbq) {
-      // Get event_id and variant from sessionStorage
+      // Check if we've already fired this event (prevents duplicate fires)
       const eventId = sessionStorage.getItem('capi_event_id');
       const abVariant = sessionStorage.getItem('ab_variant') || 'unknown';
       
+      // Only fire if we have an event_id (means this is a fresh form submission)
+      // Don't fire if no event_id - prevents duplicate events on page refresh
       if (eventId) {
-        // Fire with event_id for deduplication with CAPI, include variant in custom data
+        // Fire with event_id for deduplication with CAPI
         (window as any).fbq('track', 'Lead', { ab_variant: abVariant }, { eventID: eventId });
-        // Clean up the stored values
+        console.log('Pixel Lead event fired with eventID:', eventId);
+        // Clean up immediately to prevent double-firing
         sessionStorage.removeItem('capi_event_id');
         sessionStorage.removeItem('ab_variant');
       } else {
-        // Fallback: fire without event_id but still include variant
-        (window as any).fbq('track', 'Lead', { ab_variant: abVariant });
+        console.log('No event_id found - skipping Pixel Lead event (already fired or page refresh)');
+        // DON'T fire without event_id - CAPI already captured this lead
       }
     }
 
