@@ -253,13 +253,10 @@ const handleSubmit = async (e: React.FormEvent) => {
 
       const capiResult = await capiResponse.json();
       
-      if (capiResponse.ok) {
-        console.log('CAPI submission successful:', capiResult);
-        // Store event_id in sessionStorage for thank-you page deduplication
-        if (capiResult.event_id) {
-          sessionStorage.setItem('capi_event_id', capiResult.event_id);
-        }
-      } else {
+        if (capiResponse.ok) {
+          console.log('CAPI submission successful:', capiResult);
+          // CAPI-only tracking - no need to store event_id for deduplication
+        } else {
         console.error('CAPI submission failed:', capiResult);
         // Don't block the user flow if CAPI fails
       }
@@ -281,27 +278,26 @@ const handleSubmit = async (e: React.FormEvent) => {
 };
 ```
 
-### 4. Thank You Page Pattern
+### 4. Thank You Page Pattern (CAPI-Only Recommended)
 
 ```typescript
 useEffect(() => {
-  // Fire Meta Pixel Lead event with event_id for deduplication
-  if (typeof window !== 'undefined' && (window as any).fbq) {
-    // Get event_id from sessionStorage if available
-    const eventId = sessionStorage.getItem('capi_event_id');
-    
-    if (eventId) {
-      // Fire with event_id for deduplication with CAPI
-      (window as any).fbq('track', 'Lead', {}, { eventID: eventId }); // CHANGE EVENT TYPE IF NEEDED
-      // Clean up the stored event_id
-      sessionStorage.removeItem('capi_event_id');
-    } else {
-      // Fallback: fire without event_id
-      (window as any).fbq('track', 'Lead'); // CHANGE EVENT TYPE IF NEEDED
-    }
-  }
+  // CAPI-only approach: Clean up sessionStorage
+  // No Pixel Lead event needed - CAPI already captured it server-side
+  sessionStorage.removeItem('capi_event_id');
+  
+  // Optional: Fire other Pixel events (PageView, etc.) but not Lead
+  // if (typeof window !== 'undefined' && (window as any).fbq) {
+  //   (window as any).fbq('track', 'PageView');
+  // }
 }, []);
 ```
+
+**Why CAPI-Only for Lead Events?**
+- ✅ Only counts successful form submissions
+- ✅ Ad-blocker proof (server-side tracking)
+- ✅ No duplicate events or deduplication complexity
+- ✅ More reliable attribution
 
 ## Customization Points
 
@@ -368,8 +364,22 @@ Look for:
 - CAPI calls don't block user flow (errors are logged but don't stop form submission)
 - CRM webhook is called first (business critical)
 - CAPI is called second (tracking/analytics)
-- Client-side Pixel event fires on thank you page load
+- **CAPI-only approach**: No client-side Lead events needed
+
+## CAPI-Only vs Dual Tracking
+
+### CAPI-Only (Recommended)
+- ✅ Only successful form submissions counted
+- ✅ Ad-blocker proof
+- ✅ Simpler implementation
+- ✅ No deduplication complexity
+
+### Dual Tracking (CAPI + Pixel)
+- ✅ Redundancy if CAPI fails
+- ✅ Better ML signals for Meta
+- ❌ More complex deduplication
+- ❌ Potential duplicate events
 
 ---
 
-This implementation provides robust conversion tracking with proper deduplication between server-side and client-side events, ensuring accurate attribution and measurement.
+This implementation provides robust server-side conversion tracking that's ad-blocker proof and only counts genuine form submissions.

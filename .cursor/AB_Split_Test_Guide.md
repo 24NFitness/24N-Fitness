@@ -125,11 +125,8 @@ const handleSubmit = async (e: React.FormEvent) => {
     })
   });
 
-  // Store variant for thank-you page
-  if (capiResult.event_id) {
-    sessionStorage.setItem('capi_event_id', capiResult.event_id);
-    sessionStorage.setItem('ab_variant', abVariant);
-  }
+  // CAPI-only tracking - no need to store event_id
+  // Lead events only fire from server-side for accuracy
 };
 ```
 
@@ -170,37 +167,32 @@ export async function POST(request: NextRequest) {
 }
 ```
 
-## 5. Thank You Page Updates
+## 5. Thank You Page Updates (CAPI-Only)
 
 ```typescript
 useEffect(() => {
-  if (typeof window !== 'undefined' && (window as any).fbq) {
-    // Get event_id and variant from sessionStorage
-    const eventId = sessionStorage.getItem('capi_event_id');
-    const abVariant = sessionStorage.getItem('ab_variant') || 'unknown';
-    
-    if (eventId) {
-      // Fire with event_id for deduplication, include variant
-      (window as any).fbq('track', 'Lead', { ab_variant: abVariant }, { eventID: eventId });
-      // Clean up
-      sessionStorage.removeItem('capi_event_id');
-      sessionStorage.removeItem('ab_variant');
-    } else {
-      // Fallback: fire without event_id but still include variant
-      (window as any).fbq('track', 'Lead', { ab_variant: abVariant });
-    }
-  }
+  // Clean up sessionStorage (CAPI-only tracking, no Pixel Lead event needed)
+  // Only CAPI fires Lead events - more accurate, ad-blocker proof
+  sessionStorage.removeItem('capi_event_id');
+  sessionStorage.removeItem('ab_variant');
 }, []);
 ```
 
+**Why CAPI-Only?**
+- ✅ Only counts successful form submissions
+- ✅ Ad-blocker proof (server-side)
+- ✅ No duplicate events
+- ✅ Cleaner implementation
+
 ## Customization Checklist
 
-- [ ] Replace `page-name` with your actual page name
+- [ ] Replace `page-name` with your actual page name in middleware matcher
 - [ ] Update Meta Pixel event names (`PageName_LP_A_View`, `PageName_LP_B_View`)
 - [ ] Modify variant content (usually just hero section)
 - [ ] Update CRM webhook URL
 - [ ] Update CAPI `content_name` and `content_category`
 - [ ] Test cookie assignment and persistence
+- [ ] Add environment variables: `META_PIXEL_ID` and `META_ACCESS_TOKEN`
 
 ## Meta Events Manager Tracking
 
