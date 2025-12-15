@@ -64,30 +64,17 @@ export default function LandingPage() {
             <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
                 <div className="content-width container-padding">
                     <div className="flex items-center justify-between h-24">
-                        <div className="flex items-center lg:flex-1">
-                            <Link
-                                href="/"
-                                className="flex items-center group"
-                            >
-                                <div className="w-24 h-24 relative group-hover:scale-110 transition-transform duration-300">
-                                    <Image
-                                        src={gymConfig.assets.logo}
-                                        alt={`${gymConfig.name} Logo`}
-                                        fill
-                                        className="object-contain drop-shadow-lg"
-                                        loading="lazy"
-                                    />
-                                </div>
-                            </Link>
+                        <div className="flex items-center justify-center w-full">
+                            <div className="w-24 h-24 relative">
+                                <Image
+                                    src={gymConfig.assets.logo}
+                                    alt={`${gymConfig.name} Logo`}
+                                    fill
+                                    className="object-contain drop-shadow-lg"
+                                    loading="lazy"
+                                />
+                            </div>
                         </div>
-
-                        <Link href="/contact-us">
-                            <Button
-                                variant="primary" size="default"
-                            >
-                                <span className="relative z-10">Contact Us</span>
-                            </Button>
-                        </Link>
                     </div>
                 </div>
             </header>
@@ -168,7 +155,7 @@ export default function LandingPage() {
 
                         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
                             {/* Health Club Trial */}
-                            <div className="bg-gradient-to-br from-black via-black/90 to-[#01839d] rounded-3xl p-8 lg:p-10 animate-on-scroll">
+                            <div className="bg-gradient-to-br from-black via-black/90 to-[#01839d] rounded-3xl p-8 lg:p-10 animate-on-scroll flex flex-col">
                                 <div className="text-center mb-8">
                                     <div className="w-16 h-16 bg-[#00def5]/20 rounded-xl flex items-center justify-center mx-auto mb-6">
                                         <Dumbbell className="w-8 h-8 text-[#00def5]" />
@@ -180,7 +167,7 @@ export default function LandingPage() {
                                     </p>
                                 </div>
 
-                                <div className="space-y-4 mb-8">
+                                <div className="space-y-4 mb-8 flex-grow">
                                     <h4 className="text-xl font-bold text-white mb-4">What's included:</h4>
                                     {[
                                         'Unlimited gym floor access',
@@ -199,21 +186,21 @@ export default function LandingPage() {
                                     Experience the full Health Club — no limits, no compromises, for two weeks.
                                 </p>
 
-                                <div className="text-center">
+                                <div className="text-center mt-auto">
                                     <Button 
                                         variant="primary" 
                                         size="lg" 
                                         className="w-full"
                                         onClick={() => handleTrialClick('HealthClub')}
                                     >
-                                        Start your 2-week trial today
+                                        Start trial
                                         <ArrowRight className="ml-2 w-5 h-5" />
                                     </Button>
                                 </div>
                             </div>
 
                             {/* CrossFit Trial */}
-                            <div className="bg-gradient-to-br from-black via-black/90 to-[#01839d] rounded-3xl p-8 lg:p-10 animate-on-scroll">
+                            <div className="bg-gradient-to-br from-black via-black/90 to-[#01839d] rounded-3xl p-8 lg:p-10 animate-on-scroll flex flex-col">
                                 <div className="text-center mb-8">
                                     <div className="w-16 h-16 bg-[#00def5]/20 rounded-xl flex items-center justify-center mx-auto mb-6">
                                         <Zap className="w-8 h-8 text-[#00def5]" />
@@ -225,7 +212,7 @@ export default function LandingPage() {
                                     </p>
                                 </div>
 
-                                <div className="space-y-4 mb-8">
+                                <div className="space-y-4 mb-8 flex-grow">
                                     <h4 className="text-xl font-bold text-white mb-4">Your membership includes:</h4>
                                     {[
                                         'Unlimited CrossFit classes',
@@ -244,14 +231,14 @@ export default function LandingPage() {
                                     Train harder, recover better, and experience CrossFit without limits.
                                 </p>
 
-                                <div className="text-center">
+                                <div className="text-center mt-auto">
                                     <Button 
                                         variant="primary" 
                                         size="lg" 
                                         className="w-full"
                                         onClick={() => handleTrialClick('CrossFit')}
                                     >
-                                        Claim your 2-week unlimited pass
+                                        Claim pass
                                         <ArrowRight className="ml-2 w-5 h-5" />
                                     </Button>
                                 </div>
@@ -301,10 +288,10 @@ export default function LandingPage() {
             </section>
 
             {/* Testimonial Section */}
-            <section className="py-20 bg-white">
+            {/* <section className="py-20 bg-gradient-radial from-[#01bee4]/30 via-[#015060] to-[#01bee4]/30">
                 <div className="content-width container-padding">
                     <div className="max-w-4xl mx-auto text-center">
-                        <div className="bg-gradient-to-br from-black via-black/90 to-[#01839d] p-8 sm:p-12 rounded-2xl animate-on-scroll">
+                        <div className="glass-effect p-8 sm:p-12 rounded-2xl border border-[#00def5]/30 bg-[#00def5]/5 backdrop-blur-md animate-on-scroll">
                             <div className="flex justify-center mb-6">
                                 <div className="flex text-[#00def5]">
                                     {[...Array(5)].map((_, i) => (
@@ -324,7 +311,7 @@ export default function LandingPage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Final CTA Section */}
             <section className="py-20 bg-gradient-radial from-[#01bee4]/30 via-[#015060] to-[#01bee4]/30">
