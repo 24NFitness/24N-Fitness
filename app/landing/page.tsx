@@ -48,14 +48,13 @@ export default function LandingPage() {
         };
     }, []);
 
-    const handleTrialClick = (trialType: string) => {
+    const handleTrialClick = (trialType: string, paymentUrl: string) => {
         // Fire Meta Pixel custom event for trial clicks
         if (typeof window !== 'undefined' && (window as any).fbq) {
             (window as any).fbq('trackCustom', `${trialType}_Trial_Click`);
         }
-        // Payment link will be provided later
-        // For now, we'll use a placeholder
-        console.log(`${trialType} trial clicked - payment link to be added`);
+        // Open payment link in new tab
+        window.open(paymentUrl, '_blank');
     };
 
     return (
@@ -163,7 +162,7 @@ export default function LandingPage() {
                                     <h3 className="text-3xl font-bold text-white mb-2">2-Week Health Club Trial</h3>
                                     <div className="text-5xl font-black text-[#00def5] mb-4">£69</div>
                                     <p className="text-lg text-gray-200 leading-relaxed">
-                                        24N Fitness features premium BLK BOX, Spirit and Concept2 equipment, plus everything you need to mix up your training — from yoga to free weights.
+                                        24N Fitness features premium BLK BOX, Spirit and Concept2 equipment, plus everything you need to mix up your training - from yoga to free weights.
                                     </p>
                                 </div>
 
@@ -183,7 +182,7 @@ export default function LandingPage() {
                                 </div>
 
                                 <p className="text-gray-200 mb-8 text-center">
-                                    Experience the full Health Club — no limits, no compromises, for two weeks.
+                                    Experience the full Health Club - no limits, no compromises, for two weeks.
                                 </p>
 
                                 <div className="text-center mt-auto">
@@ -191,7 +190,7 @@ export default function LandingPage() {
                                         variant="primary" 
                                         size="lg" 
                                         className="w-full"
-                                        onClick={() => handleTrialClick('HealthClub')}
+                                        onClick={() => handleTrialClick('HealthClub', 'https://api.gymgrow.app/payment-link/694104c7251072413f381254')}
                                     >
                                         Start trial
                                         <ArrowRight className="ml-2 w-5 h-5" />
@@ -236,7 +235,7 @@ export default function LandingPage() {
                                         variant="primary" 
                                         size="lg" 
                                         className="w-full"
-                                        onClick={() => handleTrialClick('CrossFit')}
+                                        onClick={() => handleTrialClick('CrossFit', 'https://api.gymgrow.app/payment-link/69410535902dfce8410a9911')}
                                     >
                                         Claim pass
                                         <ArrowRight className="ml-2 w-5 h-5" />
@@ -328,7 +327,7 @@ export default function LandingPage() {
                                 <Button 
                                     variant="primary" 
                                     size="lg"
-                                    onClick={() => handleTrialClick('HealthClub')}
+                                    onClick={() => handleTrialClick('HealthClub', 'https://api.gymgrow.app/payment-link/694104c7251072413f381254')}
                                 >
                                     Health Club Trial - £69
                                     <ArrowRight className="ml-2 w-5 h-5" />
@@ -336,7 +335,7 @@ export default function LandingPage() {
                                 <Button 
                                     variant="primary" 
                                     size="lg"
-                                    onClick={() => handleTrialClick('CrossFit')}
+                                    onClick={() => handleTrialClick('CrossFit', 'https://api.gymgrow.app/payment-link/69410535902dfce8410a9911')}
                                 >
                                     CrossFit Trial - £99
                                     <ArrowRight className="ml-2 w-5 h-5" />

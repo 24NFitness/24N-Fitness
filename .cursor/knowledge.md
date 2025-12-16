@@ -58,7 +58,7 @@ Whether you are preparing for HYROX, improving overall strength, or looking for 
 ---
 
 ## 🤝 Community & Culture
-24N is more than a gym—it is a hub for high performers.
+24N is more than a gym-it is a hub for high performers.
 
 We believe in:
 - Elite coaching standards with a welcoming vibe

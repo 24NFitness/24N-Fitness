@@ -184,7 +184,7 @@ export default function FreeTrainingPageVariantB() {
                                 {
                                     icon: Target,
                                     title: "Personalized Coaching",
-                                    description: "Busy professionals finally getting results without living in the gym — with coaching tailored to your schedule, experience level, and goals."
+                                    description: "Busy professionals finally getting results without living in the gym - with coaching tailored to your schedule, experience level, and goals."
                                 },
                                 {
                                     icon: Shield,
@@ -199,7 +199,7 @@ export default function FreeTrainingPageVariantB() {
                                 {
                                     icon: Award,
                                     title: "Commitment That Gets Results",
-                                    description: "Yes, this offer is free — but we only want busy professionals who are serious about showing up consistently and sticking with the process long term."
+                                    description: "Yes, this offer is free - but we only want busy professionals who are serious about showing up consistently and sticking with the process long term."
                                 },
 
                             ].map((item, index) => (
