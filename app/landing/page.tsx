@@ -129,8 +129,8 @@ export default function LandingPage() {
                                 <span>24N Liverpool Street</span>
                             </div>
                             <div className="flex items-center gap-2 text-lg text-gray-300">
-                                <Star className="w-5 h-5 text-[#00def5]" />
-                                <span>Premium Equipment & Facilities</span>
+                                <Calendar className="w-5 h-5 text-[#00def5]" />
+                                <span>Redeem 5th - 31st January 2026</span>
                             </div>
                         </div>
 
@@ -148,9 +148,23 @@ export default function LandingPage() {
             <section className="py-20 bg-white">
                 <div className="content-width container-padding">
                     <div className="max-w-6xl mx-auto">
-                        <h2 className="text-4xl sm:text-5xl bg-gradient-to-r from-[#111827] to-[#01BEE4] bg-clip-text text-transparent font-bold text-center mb-16 fade-in-up">
+                        <h2 className="text-4xl sm:text-5xl bg-gradient-to-r from-[#111827] to-[#01BEE4] bg-clip-text text-transparent font-bold text-center mb-8 fade-in-up">
                             Choose Your 2-Week Trial
                         </h2>
+                        
+                        {/* Redemption Period Notice */}
+                        <div className="bg-[#00def5]/10 border border-[#00def5]/30 rounded-xl p-6 mb-16 text-center fade-in-up">
+                            <div className="flex items-center justify-center gap-2 mb-3">
+                                <Calendar className="w-5 h-5 text-[#00def5]" />
+                                <span className="text-lg font-semibold text-gray-800">Limited Time Offer</span>
+                            </div>
+                            <p className="text-gray-700 text-lg mb-1">
+                                <strong>Redeem your trial membership between 5th - 31st January 2026</strong>
+                            </p>
+                            <p className="text-gray-600 text-sm">
+                                Purchase now, start when you're ready during the redemption window
+                            </p>
+                        </div>
 
                         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
                             {/* Health Club Trial */}
