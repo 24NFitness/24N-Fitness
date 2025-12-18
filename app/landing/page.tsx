@@ -78,74 +78,8 @@ export default function LandingPage() {
                 </div>
             </header>
 
-            {/* Hero Section */}
-            <section className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden pt-32 sm:pt-40">
-                {/* Background Video */}
-                <div className="absolute inset-0 z-0">
-                    <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover"
-                    >
-                        <source src="/hero-video.mp4" type="video/mp4" />
-                        {/* Fallback image if video fails to load */}
-                        <Image
-                            src={gymConfig.assets.heroImage}
-                            alt="24N Fitness background"
-                            fill
-                            className="object-cover"
-                            priority
-                        />
-                    </video>
-                    <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/70"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40"></div>
-                </div>
-
-                <div className="relative z-20 content-width container-padding text-center">
-                    <div className="max-w-5xl mx-auto">
-
-                        {/* Main Headline */}
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] mb-6 tracking-tight hero-animate"
-                        >
-                            Experience Premium Fitness
-                            <br />
-                            <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl bg-gradient-to-r from-[#00def5] via-[#00b8cc] to-[#0099b3] bg-clip-text text-transparent">
-                                Your Way
-                            </span>
-                        </h1>
-
-                        {/* Subtitle */}
-                        <p className="text-xl sm:text-2xl md:text-3xl text-gray-200 font-medium sm:mb-16 mb-8 hero-animate"
-                            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.8)', '--animation-delay': '0.1s' } as React.CSSProperties}>
-                            Train in a sleek, modern fitness space built for performance and recovery
-                        </p>
-
-                        {/* Location Info */}
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12 hero-animate" style={{ '--animation-delay': '0.2s' } as React.CSSProperties}>
-                            <div className="flex items-center gap-2 text-lg text-gray-300">
-                                <MapPin className="w-5 h-5 text-[#00def5]" />
-                                <span>24N Liverpool Street</span>
-                            </div>
-                            <div className="flex items-center gap-2 text-lg text-gray-300">
-                                <Calendar className="w-5 h-5 text-[#00def5]" />
-                                <span>Redeem 5th - 31st January 2026</span>
-                            </div>
-                        </div>
-
-                        {/* Scroll indicator */}
-                        <div className="flex justify-center mb-16 hero-animate" style={{ '--animation-delay': '0.3s' } as React.CSSProperties}>
-                            <p className="text-lg text-gray-300 animate-pulse">
-                                Choose your trial below ↓
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             {/* Trial Options Section */}
-            <section className="py-20 bg-white">
+            <section className="py-20 mt-16 bg-white">
                 <div className="content-width container-padding">
                     <div className="max-w-6xl mx-auto">
                         <h2 className="text-4xl sm:text-5xl bg-gradient-to-r from-[#111827] to-[#01BEE4] bg-clip-text text-transparent font-bold text-center mb-8 fade-in-up">
