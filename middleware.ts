@@ -2,8 +2,12 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  // Only handle /beginners route
+  // Only handle /beginners route - always redirect to version A
   if (request.nextUrl.pathname === '/beginners') {
+    // Always redirect to version A
+    return NextResponse.redirect(new URL('/beginners/a', request.url));
+
+    /* OLD A/B TESTING LOGIC - COMMENTED OUT FOR FUTURE USE
     const existingVariant = request.cookies.get('ab-variant')?.value;
 
     // If user already has a variant, redirect to it
@@ -26,6 +30,7 @@ export function middleware(request: NextRequest) {
     });
 
     return response;
+    */
   }
 
   return NextResponse.next();
