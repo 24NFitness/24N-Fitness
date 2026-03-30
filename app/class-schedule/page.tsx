@@ -1,111 +1,9 @@
-'use client';
-
-import { useEffect } from 'react';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { Calendar, Clock } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Button } from '@/components/ui/button';
 import { gymConfig } from '@/lib/gym-config';
-import Link from 'next/link';
-
-// TypeScript declarations for BSport Widget
-declare global {
-    interface Window {
-        BsportWidget?: {
-            mount: (config: any) => void;
-        };
-        MountBsportWidget?: (config: any, repeat?: number) => void;
-    }
-}
 
 export default function ClassSchedulePage() {
-
-    useEffect(() => {
-        // Load BSport Widget Scripts
-        const loadBSportWidget = () => {
-            // Check if scripts are already loaded
-            if (document.getElementById('bsport-widget-cdn')) {
-                return;
-            }
-
-            // Load the BSport widget CDN script
-            const cdnScript = document.createElement('script');
-            cdnScript.id = 'bsport-widget-cdn';
-            cdnScript.src = 'https://cdn.bsport.io/scripts/widget.js';
-            document.head.appendChild(cdnScript);
-
-            // Add the mount function
-            const mountScript = document.createElement('script');
-            mountScript.id = 'bsport-widget-mount';
-            mountScript.innerHTML = `
-                function MountBsportWidget(config, repeat=1) {
-                    if (repeat > 50) { return }
-                    if (!window.BsportWidget) {
-                        return setTimeout(() => {
-                            MountBsportWidget(config,repeat+1)
-                        }, 100 * repeat || 1)
-                    }
-                    BsportWidget.mount(config)
-                }
-            `;
-            document.head.appendChild(mountScript);
-
-            // Initialize the widget
-            const initScript = document.createElement('script');
-            initScript.innerHTML = `
-                MountBsportWidget({
-                    "parentElement": "bsport-widget-387122",
-                    "companyId": 3535,
-                    "franchiseId": null,
-                    "dialogMode": 1,
-                    "widgetType": "calendar",
-                    "showFab": false,
-                    "fullScreenPopup": false,
-                    "styles": undefined,
-                    "config": {
-                        "calendar": {}
-                    }
-                })
-            `;
-            document.head.appendChild(initScript);
-        };
-
-        // Load BSport widget
-        loadBSportWidget();
-
-        // Optimized intersection observer for element-level animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-
-                    // Add stagger animation to child elements
-                    const staggerElements = entry.target.querySelectorAll('.animate-on-scroll');
-                    staggerElements.forEach((el, index) => {
-                        setTimeout(() => {
-                            el.classList.add('is-visible');
-                        }, index * 150);
-                    });
-
-                    // Unobserve after animation to improve performance
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe all elements with animation classes
-        const animatedElements = document.querySelectorAll('.fade-in-up, .slide-in-left, .slide-in-right, .scale-in, .animate-on-scroll');
-        animatedElements.forEach((element) => observer.observe(element));
-
-        return () => {
-            observer.disconnect();
-        };
-    }, []);
 
     const getDifficultyColor = (difficulty: string) => {
         switch (difficulty.toLowerCase()) {
@@ -137,15 +35,15 @@ export default function ClassSchedulePage() {
                 <div className="content-width container-padding">
                     <div className="max-w-4xl mx-auto text-center relative z-10">
                         {/* Badge */}
-                        <div className="inline-flex items-center bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full mb-6 border border-white/20 scale-in">
+                        <div className="inline-flex items-center bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full mb-6 border border-white/20">
                             <Calendar className="w-5 h-5 text-white mr-2" />
                             <span className="caption-lg text-white">Class Schedule</span>
                         </div>
 
-                        <h1 className="display-lg text-white mb-6 fade-in-up">
+                        <h1 className="display-lg text-white mb-6">
                             Class Schedule
                         </h1>
-                        <p className="body-lg text-gray-300 max-w-2xl mx-auto fade-in-up">
+                        <p className="body-lg text-gray-300 max-w-2xl mx-auto">
                             View our full class schedule and discover our comprehensive range of training programs
                             designed to challenge you at every level.
                         </p>
@@ -153,11 +51,15 @@ export default function ClassSchedulePage() {
                 </div>
             </section>
 
-            {/* BSport Widget Timetable */}
-            <section className="bg-white">
-                <div className="p-4">
-                    <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
-                        <div id="bsport-widget-387122" className="min-h-[600px]"></div>
+            {/* Wodboard Timetable */}
+            <section className="bg-white flex-1">
+                <div className="p-4 h-full">
+                    <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-full">
+                        <iframe
+                            src="https://www.wodboard.com/locations/877/timetable/e2f18449bd?adi=1"
+                            style={{ width: '100%', height: 'calc(100vh - 80px)', minHeight: '700px', border: 0, display: 'block' }}
+                            title="Class Timetable"
+                        />
                     </div>
                 </div>
             </section>
@@ -170,15 +72,15 @@ export default function ClassSchedulePage() {
                 </div>
 
                 <div className="content-width container-padding relative z-10">
-                    <div className="text-center mb-16 fade-in-up">
-                        <div className="inline-flex items-center bg-white/10 backdrop-blur-sm px-6 py-3 mb-8 rounded-full border border-white/20 scale-in">
+                    <div className="text-center mb-16">
+                        <div className="inline-flex items-center bg-white/10 backdrop-blur-sm px-6 py-3 mb-8 rounded-full border border-white/20">
                             <Calendar className="w-5 h-5 text-white mr-3" />
                             <span className="caption-lg text-white">Our Training Programs</span>
                         </div>
-                        <h2 className="display-lg text-white mb-8 fade-in-up">
+                        <h2 className="display-lg text-white mb-8">
                             Class Descriptions
                         </h2>
-                        <p className="body-xl text-gray-300 max-w-3xl mx-auto fade-in-up">
+                        <p className="body-xl text-gray-300 max-w-3xl mx-auto">
                             Discover our comprehensive range of classes designed to challenge you at every level.
                             From Olympic Weightlifting to High-Intensity CrossFit workouts.
                         </p>

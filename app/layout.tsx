@@ -180,7 +180,7 @@ export default function RootLayout({
         </Script>
 
         {children}
-        <WhatsAppChatButton />
+        {/* <WhatsAppChatButton /> */}
       </body>
     </html>
   );

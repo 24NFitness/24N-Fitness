@@ -282,10 +282,6 @@ export default function AboutPage() {
                 <CheckCircle className="w-4 h-4 text-green-400" />
                 <span>Cancel anytime</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-green-400" />
-                <span>7-day guarantee</span>
-              </div>
             </div>
           </div>
         </div>

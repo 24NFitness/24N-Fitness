@@ -132,10 +132,6 @@ export default function JoinPage() {
                 <CheckCircle className="w-5 h-5 text-green-400" />
                 <span>Cancel anytime</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>7-day guarantee</span>
-              </div>
             </div>
           </div>
         </div>
