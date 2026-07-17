@@ -88,6 +88,16 @@ export default function TrialForm({
     setIsSubmitting(true);
 
     try {
+
+      // Send email through Resend
+      await fetch('/api/capi-lead/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
       const response = await fetch('https://services.leadconnectorhq.com/hooks/pdNVeOQrokwprvPa1qJp/webhook-trigger/7a40f10b-b34e-4000-b191-9bec0524d8ee', {
         method: 'POST',
         headers: {
@@ -104,7 +114,8 @@ export default function TrialForm({
       if (response.ok) {
         console.log('Form submitted successfully');
         setIsSubmitted(true);
-        setShowBookingModal(true);
+        //remove booking model
+        //setShowBookingModal(true);
         setFormData({
           first_name: '',
           last_name: '',
@@ -161,7 +172,7 @@ export default function TrialForm({
         <div className="mb-6 p-4 bg-green-500/20 border border-green-500/30 rounded-xl text-center">
           <div className={`flex items-center justify-center gap-2 ${successTextColor}`}>
             <CheckCircle className="w-5 h-5" />
-            <span className="font-semibold">Success! We'll contact you within 10 minutes.</span>
+            <span className="font-semibold">Success! We will get in touch with you as soon as we can!</span>
           </div>
         </div>
       )}
