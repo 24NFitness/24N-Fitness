@@ -186,6 +186,7 @@ export const gymConfig: GymConfig = {
   urls: {
     website: 'https://24nfitness.co.uk',
     booking: '/join',
+    // dont need this anymore 
     consultation: 'https://api.gymgrow.app/widget/bookings/24ncalendar',
     services: '/services',
     about: '/about',
@@ -440,7 +441,7 @@ export const gymConfig: GymConfig = {
       name: 'Monthly Membership',
       description: 'Our facility is home to a range of premium BLK BOX, Spirit and Concept 2 equipment. 24N Fitness houses all the facilities to diversify your workouts. From yoga to free weights, the gym floor provides customers with a sleek, modern training space. Included in the Health Club membership is unlimited access to gym floor, mind and body studio, including all classes, changing facilities, sauna and ice bath.',
       price: 'Contact for pricing',
-      link: 'https://backoffice.bsport.io/checkout/3535/subscription/24972?force=true',
+      link: 'https://www.wodboard.com/locations/877/signup/6399895bde?purchasable=Plan-12109',
       type: 'health-club'
     },
     {
@@ -448,32 +449,32 @@ export const gymConfig: GymConfig = {
       name: 'Annual Membership',
       description: 'Save with our annual Health Club membership. Get all the benefits of monthly membership with better value for a full year commitment.',
       price: 'Contact for pricing',
-      link: 'https://backoffice.bsport.io/customer/payment/pass/637522/?membership=3535&force=true',
+      link: 'https://www.wodboard.com/locations/877/signup/6399895bde?purchasable=Plan-12883',
       type: 'health-club'
     },
     // CrossFit Memberships
     {
       category: 'CrossFit',
-      name: '12 Month Membership',
+      name: 'Monthly Membership',
       description: 'Liverpool Street CrossFit, owned and housed by 24N Fitness, sits below the Health Club. The CrossFit box is unlike anything of its kind, merging CrossFit with high end luxury fitness. In this remarkable space sits a full, custom built BLK BOX rig, accompanied by ceiling mounted gymnastic rings, a full range of free weights and much more. The Liverpool Street CrossFit memberships provide access to all areas in the 24N Fitness Health Club, as well as, unlimited CrossFit classes and open gym in the CrossFit space.',
       price: 'Contact for pricing',
-      link: 'https://backoffice.bsport.io/checkout/3535/subscription/25012?force=true',
-      type: 'crossfit'
-    },
-    {
-      category: 'CrossFit',
-      name: 'Monthly Rolling',
-      description: 'Flexible monthly CrossFit membership with no long-term commitment. Perfect for those who want to try CrossFit or have changing schedules.',
-      price: 'Contact for pricing',
-      link: 'https://backoffice.bsport.io/checkout/3535/subscription/24975?force=true',
+      link: 'https://www.wodboard.com/locations/877/signup/6399895bde?purchasable=Plan-12062',
       type: 'crossfit'
     },
     {
       category: 'CrossFit',
       name: 'Annual Membership',
-      description: 'Best value CrossFit membership with annual commitment. Includes all CrossFit and Health Club benefits.',
+      description: 'Flexible monthly CrossFit membership with no long-term commitment. Perfect for those who want to try CrossFit or have changing schedules.',
       price: 'Contact for pricing',
-      link: 'https://backoffice.bsport.io/customer/payment/pass/637524/?membership=3535&force=true',
+      link: 'https://www.wodboard.com/locations/877/signup/6399895bde?purchasable=Plan-12882',
+      type: 'crossfit'
+    },
+    {
+      category: 'CrossFit',
+      name: '12 Month Commitment',
+      description: 'Flexible monthly CrossFit membership with no long-term commitment. Perfect for those who want to try CrossFit or have changing schedules.',
+      price: 'Contact for pricing',
+      link: 'https://www.wodboard.com/locations/877/signup/6399895bde?purchasable=Plan-12958',
       type: 'crossfit'
     },
     // Class Packs
@@ -482,32 +483,48 @@ export const gymConfig: GymConfig = {
       name: 'Day Pass',
       description: 'Try us out with a single day pass. Perfect for visitors or those wanting to experience our facilities before committing to membership.',
       price: '£30',
-      link: 'https://backoffice.bsport.io/customer/payment/pass/637528/?membership=3535&force=true',
+      link: ' https://www.wodboard.com/locations/877/signup/6399895bde?purchasable=Pass-6684',
       type: 'class-pack'
     },
     {
       category: 'Class Packs',
-      name: '10 Classes',
+      name: '10 Class Pack',
       description: 'Great value class pack for regular attendees. Includes access to CrossFit classes and Health Club facilities.',
       price: '£270',
-      link: 'https://backoffice.bsport.io/customer/payment/combo/6742/?membership=3535',
+      link: 'https://www.wodboard.com/locations/877/signup/6399895bde?purchasable=Pass-7207',
       type: 'class-pack'
     },
     {
       category: 'Class Packs',
-      name: '20 Classes',
+      name: '20 Class Pack',
       description: 'Best value class pack for committed fitness enthusiasts. Maximum savings per class with extended validity.',
       price: '£480',
-      link: 'https://backoffice.bsport.io/customer/payment/combo/6743/?membership=3535',
+      link: 'https://www.wodboard.com/locations/877/signup/6399895bde?purchasable=Pass-7208',
       type: 'class-pack'
     },
     // Transformation Program
     {
       category: 'Transformation',
-      name: '8 Weeks Transformation Program',
+      name: '6 Week Transformation Program',
+      description: 'Comprehensive 6-week program designed to help you lose weight, tone up, and feel stronger and more energised. Build improved confidence, self-esteem, and overall health while establishing a solid foundation of knowledge, habits, and routines to maintain your progress long after the program ends.',
+      price: 'Contact for pricing',
+      link: 'https://www.wodboard.com/locations/877/signup/6399895bde?code=951649c6ceea346c&purchasable=Plan-13008',
+      type: 'transformation'
+    },
+    {
+      category: 'Transformation',
+      name: '8 Week Transformation Program',
       description: 'Comprehensive 8-week program designed to help you lose weight, tone up, and feel stronger and more energised. Build improved confidence, self-esteem, and overall health while establishing a solid foundation of knowledge, habits, and routines to maintain your progress long after the program ends.',
       price: 'Contact for pricing',
-      link: 'https://backoffice.bsport.io/customer/payment/combo/6891/?membership=3535',
+      link: 'https://www.wodboard.com/locations/877/signup/6399895bde?code=12a775d07805800a&purchasable=Plan-13009',
+      type: 'transformation'
+    },
+    {
+      category: 'Transformation',
+      name: '12 Week Transformation Program',
+      description: 'Comprehensive 12-week program designed to help you lose weight, tone up, and feel stronger and more energised. Build improved confidence, self-esteem, and overall health while establishing a solid foundation of knowledge, habits, and routines to maintain your progress long after the program ends.',
+      price: 'Contact for pricing',
+      link: 'https://www.wodboard.com/locations/877/signup/6399895bde?code=40fa9c7d6fb6f7a8&purchasable=Plan-13010',
       type: 'transformation'
     }
   ]

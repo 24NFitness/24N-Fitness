@@ -264,7 +264,7 @@ export default function ProgramsPage() {
                         <h3 className="text-xl font-bold text-black mb-3 group-hover:text-gray-800 transition-colors duration-300">
                           {membership.name}
                         </h3>
-                        <div className="text-3xl font-bold text-black mb-2">{membership.price}</div>
+                        <div className="text-3xl font-semi-bold text-black mb-2">{membership.price}</div>
                       </div>
 
                       {/* CTA Button */}
@@ -280,40 +280,58 @@ export default function ProgramsPage() {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* 8 Weeks Transformation Program */}
-      <section className="section-padding bg-gradient-to-br from-gray-900 via-black to-gray-900 section-container">
-        <div className="content-width container-padding">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="text-center mb-12 fade-in-up">
-              <h2 className="display-lg text-white mb-8">
-                JOIN OUR 8 WEEKS{' '}
-                <span className="bg-gradient-to-r from-[#5c7893] to-[#e6e6e6] bg-clip-text text-transparent">
-                  TRANSFORMATION
-                </span>{' '}
-                PROGRAM
-              </h2>
-
-              {gymConfig.memberships.filter(m => m.type === 'transformation').map((program, index) => (
-                <div key={index} className="slide-in-up">
-                  <p className="body-xl text-gray-300 mb-12 max-w-3xl mx-auto">
-                    {program.description}
-                  </p>
-
-                  {/* CTA */}
-                  <div className="text-center">
-                    <Link href={program.link} target="_blank">
-                      <Button className="text-xl px-12 py-4 bg-[#5c7893]">
-                        SIGN UP NOW
-                      </Button>
-                    </Link>
-                  </div>
+    
+        {/* Transformations */}
+            <div className="mb-20">
+              <div className="text-center mb-12 fade-in-up">
+                <div className="inline-flex items-center bg-gradient-to-r from-red-100 to-red-50 text-red-800 px-6 py-3 rounded-full mb-6">
+                  <Target className="w-5 h-5 mr-2" />
+                  <span className="font-semibold">Transformations</span>
                 </div>
-              ))}
+                <h2 className="display-md text-black mb-6">Transformation Programs</h2>
+                <p className="body-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                  Comprehensive 6, 8 or 12-week program designed to help you lose weight, tone up, and feel stronger and more energised. Build improved confidence, self-esteem, and overall health while establishing a solid foundation of knowledge, habits, and routines to maintain your progress long after the program ends.
+                </p>
+              </div>
+              <div className="px-6 md:px-12">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 slide-in-right">
+                {gymConfig.memberships.filter(m => m.type === 'transformation').map((membership, index) => {
+                  const IconComponent = getMembershipIcon(membership.name, membership.type);
+
+                  return (
+                    <div key={index} className="group relative bg-gradient-to-br from-white to-gray-50 border-20 border-gray-200 hover:border-gray-300 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 overflow-hidden animate-on-scroll">
+                      {/* Background Gradient Effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                      {/* Content */}
+                      <div className="relative z-10 text-center">
+                        {/* Icon */}
+                        <div className="mb-6 flex justify-center">
+                          <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-3xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                            <IconComponent className="w-10 h-10 text-white" />
+                          </div>
+                        </div>
+
+                        {/* Title & Price */}
+                        <div className="mb-6">
+                          <h3 className="text-xl font-bold text-black mb-3 group-hover:text-gray-800 transition-colors duration-300">
+                            {membership.name}
+                          </h3>
+                        </div>
+
+                        {/* CTA Button */}
+                        <Link href={membership.link} target="_blank">
+                          <Button className="w-full bg-black hover:bg-gray-800 text-white transition-all duration-300 transform hover:scale-105">
+                            Buy Now
+                          </Button>
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              </div>
             </div>
-          </div>
-        </div>
       </section>
 
       {/* What's Included Section */}

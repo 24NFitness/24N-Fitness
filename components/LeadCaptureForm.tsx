@@ -24,8 +24,6 @@ const benefits = [
 
 export default function LeadCaptureForm() {
 
-
-
   return (
     <section className="section-padding bg-black section-container">
       <div className="content-width container-padding">
