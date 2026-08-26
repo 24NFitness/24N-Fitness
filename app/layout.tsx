@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { gymConfig } from '@/lib/gym-config';
 import Script from 'next/script';
 import WhatsAppChatButton from '@/components/WhatsAppChatButton';
+import AnnouncementBar from '@/components/AnnouncementBar';
 
 export const metadata: Metadata = {
   title: gymConfig.seo.title,
@@ -178,7 +179,7 @@ export default function RootLayout({
             fbq('track', 'PageView');
           `}
         </Script>
-
+        <AnnouncementBar />
         {children}
         {/* <WhatsAppChatButton /> */}
       </body>

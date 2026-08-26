@@ -3,6 +3,9 @@
 import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import HCSection from '@/components/HCSection';
+import LSCFSection from '@/components/LSCFSection';
+import RecoverySuiteSection from '@/components/RecoverySuiteSection';
 import USPSection from '@/components/USPSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import FacilitiesSection from '@/components/FacilitiesSection';
@@ -68,7 +71,8 @@ export default function Home() {
     }, observerOptions);
 
     // Observe all elements with animation classes
-    const animatedElements = document.querySelectorAll('.fade-in-up, .slide-in-left, .slide-in-right, .scale-in, .animate-on-scroll');
+    //, .animate-on-scroll
+    const animatedElements = document.querySelectorAll('.fade-in-up, .slide-in-left, .slide-in-right, .scale-in, .photo-banner');
     animatedElements.forEach((element) => observer.observe(element));
 
     // Enhanced smooth scroll behavior
@@ -120,10 +124,16 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <HCSection />
+
+        <LSCFSection />
+
+        <RecoverySuiteSection />
+
+        {/*<WellnessSection />*/}
+        {/*<TestimonialsSection /> */}
+        {/*<FacilitiesSection />*/}
         <USPSection />
-        <WellnessSection />
-        {/* <TestimonialsSection /> */}
-        <FacilitiesSection />
         <LeadCaptureForm />
         <Newsletter />
       </main>

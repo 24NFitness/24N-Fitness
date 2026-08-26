@@ -46,7 +46,7 @@ export default function Hero() {
 
             {/* Subheading */}
             <p className="body-xl text-gray-200 max-w-2xl mx-auto hero-animate" style={{ '--animation-delay': '0.1s' } as React.CSSProperties}>
-            Gym Floor • CrossFit Box • Sauna • Ice Bath
+            24N Fitness Health Club • Liverpool Street CrossFit • Recovery Suite
             </p>
           </div>
           

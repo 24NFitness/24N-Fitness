@@ -47,18 +47,18 @@ export default function USPSection() {
             <span className="caption-lg text-white">What Makes Us Different</span>
           </div>
 
-          <h2 className="display-lg flex flex-wrap items-center justify-center gap-4 text-black mb-10 fade-in-up">
+          <h2 className="display-lg flex flex-wrap items-center justify-center gap-4 text-black mb-10">
             Why Choose {gymConfig.name}
           </h2>
 
-          <p className="body-xl text-gray-600 max-w-4xl mx-auto fade-in-up">
+          <p className="body-xl text-gray-600 max-w-4xl mx-auto">
             We're not just another gym. We're a community dedicated to helping you achieve extraordinary results through proven methods and unwavering support.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {usps.map((usp, index) => (
-            <div key={index} className="group relative animate-on-scroll">
+            <div key={index} className="group relative animate-on-scroll fade-in-up">
               <div className="bg-white border-2 border-gray-200 hover:border-gray-300 rounded-3xl p-8 h-full shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 overflow-hidden">
 
                 {/* Background effect on hover */}
