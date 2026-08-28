@@ -179,7 +179,7 @@ export default function RootLayout({
             fbq('track', 'PageView');
           `}
         </Script>
-        <AnnouncementBar />
+        {/* <AnnouncementBar /> */}
         {children}
         {/* <WhatsAppChatButton /> */}
       </body>
