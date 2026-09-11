@@ -203,7 +203,7 @@ export const gymConfig: GymConfig = {
     logo: '/24nLogo.png',
     horizontalLogo: '/24nLogo.png',
     heroImage: '/hero-image.webp',
-    aboutImage: '/about-image.webp'
+    aboutImage: '/people/members/fuf1.jpg'
   },
 
   // Statistics
@@ -275,14 +275,61 @@ export const gymConfig: GymConfig = {
     }
   ],
 
-  // Team Members (placeholder - update with actual team)
   team: [
     {
-      name: 'Team Member',
-      role: 'Head Coach',
-      image: 'member',
-      bio: 'Experienced fitness professional dedicated to helping members achieve their peak performance goals.'
-    }
+      name: "Ryan McCarthy",
+      role: "General Manager and Head of Personal Training",
+      image: "ryan",
+      bio: "I’m a level 2 & 3 qualified Personal Trainer, as well as CrossFit Level 1 & 2 Coach with five years of experience specialising in one-to-one personal training and class teaching. I’m currently Head of Personal Training and General Manager here at 24N Fitness, and have previously been Head Coach at CrossFit Piccadilly, CrossFit Liverpool Street, and Head of Standards for 24N. With a background in county, university and club rugby, I specialise in strength & conditioning, CrossFit & Olympic weightlifting. Having experienced multiple injuries during my playing career, I take a holistic approach to coaching and have extensive experience helping clients lose weight, improve performance and return to full fitness after injury."
+    },
+    {
+      name: "Sacha O'Reilly",
+      role: 'Head of Marketing and Sales',
+      image: 'sacha',
+      bio: 'Kia Ora, I’m Sacha, Head of Sales & Marketing. I am originally from New Zealand, where I studied Sport Science. I’ve always had a passion for fitness and helping people find a form of movement they love. I enjoy all kinds of training – especially netball, strength work, CrossFit, and ultra running. I am currently preparing for a 100-mile ultramarathon in July 2026. I truly believe there’s a form of movement for everyone, and I love being part of a community like 24N that supports all kinds of training and recovery. Community is really important to me, so I’m always up for a chat at the gym!'
+    }, 
+    {
+      name: "Luis DeVera",
+      role: "CEO",
+      image: "luis",
+      bio: "Luis deVera is the CEO and founder of 24N. He’s worked across the world in the leasure industry for the past 27 years, everything from lifeguarding to gym instruction, personal training, and management. Now in his 40s, he continues to keep a very enthusiastic fitness regime, priding himself on beating the younger members of the team whenever given the opportunity. “The last two years in London have seen aggressive growth from what we started. We've successfully built a great product and the perfect team to deliver it. He can't help but continue to be passionately involved in the day-to-day of the business, to make sure what's promised is delivered."
+    },
+    {
+      name: "Cameron Mummery",
+      role: "Head Coach and PT",
+      image: "cam",
+      bio: "I’m Cameron the Head Coach of CrossFit and a Personal Trainer at 24N Fitness and Liverpool Street CrossFit. I originally started here as a member, and now lead all things CrossFit within the gym. I oversee coaching standards, athlete development, and day-to-day CrossFit operations, while also designing all of our programming and delivering gym events. My focus is on building effective, structured training that helps athletes of all levels progress and perform."
+    },
+    {
+      name: "Andrew Gibson",
+      role: "Sales and Marketing Executive",
+      image: "andrew",
+      bio: "Hi, I'm Andrew! The Sales & Marketing Executive at 24N Fitness, where I help people get started and feel confident about their next step into training. I take the time to understand each person’s goals and match them with the right training option, working closely with the coaching team to make sure they’re set up for long-term success. My role is all about building relationships, creating a great first experience, and helping the 24N community continue to grow. My goal is to eventually overthrow the snatching king Cameron!"
+    },
+    {
+      name: "Annie Knobbs",
+      role: "PT and Sales Executive",
+      image: "annie",
+      bio: "I have been a Personal Trainer for 6 years, specialising in strength and conditioning, mobility, fat loss and endurance. Through being a professional dancer and yoga/pilates (mat and reformer) instructor, I enjoy implementing and utilising a wide range of training methodologies in both my own and my clients training. I am passionate about helping people find their love of training, and living a more complete, healthy lifestyle. I have a masters degree in Contemporary Dance, yoga (vinyasa) and pilates (mat and reformer) and am a level 2 and 3 qualified personal trainer, with specialisations in nutrition."
+    },
+    {
+      name: "Aga Saj",
+      role: "Head of Front of House and PT",
+      image: "aga",
+      bio: "As Head of Reception, I make sure the gym runs smoothly and create a welcoming, supportive environment where everyone feels acknowledged. As a Specialist Personal Trainer, I focus on women’s wellbeing, designing personalized training and nutrition plans that address unique lifestyle and physiological needs. My goal is to help clients build sustainable habits, improve long-term health, and gain confidence in their bodies through structured guidance and accountability."
+    },
+    {
+      name: "Amy Wilson",
+      role: "PT and Front of House",
+      image: "amy",
+      bio: "Hi, I’m Amy, a Personal Trainer and Receptionist. After years in corporate recruitment, I discovered my passion for helping people feel strong, confident, and at home in their bodies. I specialise in strength & conditioning, fat loss, body recomposition, and glute building, helping clients gain strength, build curves, and move with confidence—without giving up what they love. Whether you’re new to lifting or returning, my approach is simple, sustainable, and fun."
+    },
+    {
+      name: "Zahra Cheeseman",
+      role: "Front of House",
+      image: "zahra",
+      bio: "Hello! I’m Zahra, one of the receptionists here at 24N Fitness. I like to lift and since working here, have picked up CrossFit, which has been really fun (and mostly painful). I spend most of my free time playing football- I am a semi professional footballer for Dulwich Hamlet FC. I grew up playing for the Brighton academy and went to university in Colorado in the US to study and play division 1 soccer. I have also represented the Moroccan national team which was an incredible experience. I love to chat, so feel free to come and say hi!"
+    },
   ],
 
   // Company Values

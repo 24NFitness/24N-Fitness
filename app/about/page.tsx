@@ -15,7 +15,7 @@ export default function AboutPage() {
   // Build image path from gym-config's member.image if provided, otherwise fallback to Michael D
   const getCoachImageSrc = (member: { image?: string }) => {
     const fileBase = member.image && member.image.trim() ? member.image.trim() : '';
-    return `/coaches/${fileBase}.webp`;
+    return `/people/team/${fileBase}.jpg`;
   };
 
   useEffect(() => {
@@ -83,7 +83,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Story Section */}
+    {/* Our Story Section */}
       <section className="section-padding bg-white section-container">
         <div className="content-width container-padding">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -123,10 +123,96 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> 
+
+{/* Photo Collage Section */}
+<section className="relative min-h-[700px] overflow-hidden bg-black">
+
+  <div className="absolute inset-0 grid grid-cols-2 md:grid-cols-4 gap-2 p-2">
+
+    <div className="overflow-hidden rounded-lg md:row-span-2">
+      <img
+        src="/people/members/cfwall1.jpg"
+        alt="Gym training"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+    <div className="overflow-hidden rounded-lg">
+      <img
+        src="/people/members/cfwall2.jpg"
+        alt="Members training"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+    <div className="overflow-hidden rounded-lg md:row-span-2">
+      <img
+        src="/people/members/corkboard.jpg"
+        alt="Gym equipment"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+    <div className="overflow-hidden rounded-lg">
+      <img
+        src="/people/members/ultra.jpg"
+        alt="Gym community"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+    <div className="overflow-hidden rounded-lg">
+      <img
+        src="/people/members/fuf2.jpg"
+        alt="Training session"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+    <div className="overflow-hidden rounded-lg">
+      <img
+        src="/people/members/fuf3.jpg"
+        alt="Gym atmosphere"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+    <div className="overflow-hidden rounded-lg">
+      <img
+        src="/people/members/girls.jpg"
+        alt="Members at the gym"
+        className="w-full h-full object-cover"
+      />
+    </div>
+    <div className="overflow-hidden rounded-lg">
+      <img
+        src="/people/members/tig.jpg"
+        alt="Members at the gym"
+        className="w-full h-full object-cover"
+      />
+    </div>
+    <div className="overflow-hidden rounded-lg">
+      <img
+        src="/people/members/xenom.jpg"
+        alt="Members at the gym"
+        className="w-full h-full object-cover"
+      />
+    </div>
+    <div className="overflow-hidden rounded-lg">
+      <img
+        src="/people/members/farm.jpg"
+        alt="Members at the gym"
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+  </div>
+
+</section>
 
       {/* Mission Section */}
-      <section className="section-padding bg-gray-50 section-container">
+      {/* <section className="section-padding bg-gray-50 section-container">
         <div className="content-width container-padding">
           <div className="text-center mb-16">
             <h2 className="display-md text-black mb-8 fade-in-up">
@@ -136,10 +222,10 @@ export default function AboutPage() {
               {gymConfig.mission.statement} As a proud CrossFit affiliate and HYROX official partner,
               we maintain the highest standards of coaching and training excellence.
             </p>
-          </div>
+          </div> */}
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+          {/* <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
             <div className="text-center bg-white rounded-2xl p-8 shadow-lg animate-on-scroll">
               <div className="display-md text-black mb-2">{gymConfig.stats.members}</div>
               <div className="body-md text-gray-600">Happy Members</div>
@@ -158,10 +244,10 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Values Section */}
-      <section className="section-padding bg-white section-container">
+      {/* <section className="section-padding bg-white section-container">
         <div className="content-width container-padding">
           <div className="text-center mb-16">
             <h2 className="display-md text-black mb-8 fade-in-up">
@@ -193,53 +279,71 @@ export default function AboutPage() {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* Team Section */}
-      {/* <section className="section-padding bg-gray-50 section-container">
+   {/* Meet the Team Section */}
+      <section className="section-padding bg-gray-50 section-container">
         <div className="content-width container-padding">
+
+          {/* Section Heading */}
           <div className="text-center mb-16">
-            <h2 className="display-md text-black mb-8 fade-in-up">
-              Meet Our Team
+            <h2 className="display-md text-black mb-6 fade-in-up">
+              Meet the Team
             </h2>
+
             <p className="body-xl text-gray-600 max-w-3xl mx-auto fade-in-up">
-              Our expert coaches are passionate about helping you achieve your fitness goals
-              and becoming the best version of yourself.
+              Meet the people behind {gymConfig.displayName}. Our coaches bring
+              experience, passion, and a genuine commitment to helping every
+              member become stronger, healthier, and more confident.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Team Members */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {gymConfig.team.map((member, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 animate-on-scroll"
+                className="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300 animate-on-scroll"
               >
-                <div className="relative w-full h-72 overflow-hidden">
+
+                {/* Staff Photo */}
+                <div className="relative w-full h-96 overflow-hidden bg-gray-200">
                   <Image
                     src={getCoachImageSrc(member)}
-                    alt={member.name}
+                    alt={`${member.name} - ${member.role}`}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
+
+                  {/* Image Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <div className="p-6">
-                  <h3 className="heading-xl text-black mb-1">
+
+                {/* Staff Information */}
+                <div className="p-8">
+
+                  <h3 className="heading-xl text-black mb-2">
                     {member.name}
                   </h3>
-                  <div className="inline-flex items-center gap-2 rounded-full bg-gray-100 text-gray-700 px-3 py-1 mb-4">
-                    <span className="caption-lg">{member.role}</span>
+
+                  <div className="inline-flex items-center rounded-full bg-black text-white px-4 py-2 mb-5">
+                    <span className="caption-lg">
+                      {member.role}
+                    </span>
                   </div>
-                  <p className="body-sm text-gray-600">
+
+                  <p className="body-md text-gray-600 leading-relaxed">
                     {member.bio}
                   </p>
+
                 </div>
               </div>
             ))}
           </div>
+
         </div>
-      </section> */}
+      </section>
 
       {/* CTA Section */}
       <section className="section-padding bg-black text-white relative overflow-hidden section-container">
