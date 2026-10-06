@@ -125,11 +125,8 @@ export default function Home() {
       <main>
         <Hero />
         <HCSection />
-
         <LSCFSection />
-
         <RecoverySuiteSection />
-
         {/*<WellnessSection />*/}
         {/*<TestimonialsSection /> */}
         {/*<FacilitiesSection />*/}

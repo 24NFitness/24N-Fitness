@@ -11,7 +11,7 @@ export async function POST(request: Request) {
 
     await resend.emails.send({
       from: 'Website Enquiry <onboarding@resend.dev>',
-      to: 'sacha@24nfitness.com',
+      to: 'info@24nfitness.com',
       subject: 'New Website Enquiry',
       html: `
         <h2>New Website Enquiry</h2>
